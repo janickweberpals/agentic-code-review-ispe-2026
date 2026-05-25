@@ -15,7 +15,7 @@ author:
         city: 
 output: html_document
 code-fold: false
-section-numbering: false
+number-sections: false
 ---
 
 ```{r}
