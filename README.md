@@ -1,4 +1,4 @@
-<img src="icpe26_logo.jpg" data-fig-align="center" width="728" />
+<img src="icpe26_logo.jpg" data-fig-align="center" />
 
 **Unlocking the Power of Pharmacoepidemiology to Improve Patient Health**
 >Allianz Milan Convention Center, Milan, Italy
