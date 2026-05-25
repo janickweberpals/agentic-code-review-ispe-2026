@@ -58,7 +58,7 @@ library(gt)
     - Pull requests: the peer-review for code
     - Human code review
 - Introduction to agentic coding assistants (e.g., GitHub Copilot, Claude Code)
-    - Local review and validation of code (slash Commands and prompts)
+    - Local review and validation of code (slash commands and skills)
     - Agentic code review as part of a pull request workflow
 - Examples of how to use agentic coding assistants for code review and validation in pharmacoepidemiology
     - Interacting with code using natural language
