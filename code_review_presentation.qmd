@@ -55,6 +55,7 @@ library(gt)
 - WHY code review and validation is important in pharmacoepidemiology
     - Code review and validation (differences)
 - Code review and validation: HOW?
+    - Pull requests: the peer-review for code
 - Introduction to agentic coding assistants (e.g., GitHub Copilot, Claude Code)
     - Local review and validation of code (slash Commands and prompts)
     - Agentic code review as part of a pull request workflow
