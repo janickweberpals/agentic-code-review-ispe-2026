@@ -15,6 +15,7 @@ author:
         city: 
 output: html_document
 code-fold: false
+section-numbering: false
 ---
 
 ```{r}
@@ -24,9 +25,13 @@ library(gt)
 library(dplyr)
 ```
 
-This site provides some further information.
+## Slide deck
 
-## Technical Setup 
+<iframe src="code_review_presentation.html" frameborder="0" width="725" height="440.6641" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+## Technical setup 
 
 This section provides some step-by-step instructions on how to install relevant software discussed and presented throughout the course.
 
