@@ -46,239 +46,179 @@ library(gt)
 ::: callout-important
 ## Disclosure
 
-- JW is an employee at AstraZeneca and own shares in AstraZeneca. The views and opinions expressed in this presentation are those of the author and do not necessarily reflect the official policy or position of AstraZeneca. The author is presenting in a personal capacity.
-- JW does not have any financial or personal relationships with Microsoft, OpenAI, or Anthropic that could influence the content of this presentation.
+-   JW is an employee at AstraZeneca and own shares in AstraZeneca. The views and opinions expressed in this presentation are those of the author and do not necessarily reflect the official policy or position of AstraZeneca. The author is presenting in a personal capacity.
+-   JW does not have any financial or personal relationships with Anthropic, Microsoft, or OpenAI, that could influence the content of this presentation.
 :::
 
 ## Structure Brainstorming
 
-- WHY code review and validation is important in pharmacoepidemiology
-    - Code review and validation (differences)
-- Code review and validation: HOW?
-    - Pull requests: the peer-review for code
-    - Human code review
-- Introduction to agentic coding assistants (e.g., GitHub Copilot, Claude Code)
-    - Local review and validation of code (slash commands and skills)
-    - Agentic code review as part of a pull request workflow
-- Examples of how to use agentic coding assistants for code review and validation in pharmacoepidemiology
-    - Interacting with code using natural language
+-   WHY code review and validation is important in pharmacoepidemiology
+    -   Code review and validation (differences)
+-   Code review and validation: HOW?
+    -   Pull requests: the peer-review for code
+    -   Human code review
+-   Introduction to agentic coding assistants (e.g., GitHub Copilot, Claude Code)
+    -   Local review and validation of code
+    -   Slash commands and (custom) skills
+    -   Agentic code review as part of a pull request workflow
+-   Examples of how to use agentic coding assistants for code review and validation in pharmacoepidemiology
+    -   Interacting with code using natural language
 
-## Poll (raise your hands) {visibility="hidden"}
+# Code Review - The Why?
 
-::: incremental
--   Who uses AI assistants (ChatGPT, Gemini, Claude, Mistral, ...) on a daily basis?
+## The Hallmarks of Transparent and Reproducible Research
 
--   Who uses AI assistants for code development, QC, or improving transparency and reproducibility in your research?
+:::: {.columns}
 
--   Who has ever used GitHub Copilot?
+::: {.column width="25%"}
+::: {.fragment}
+::: {.callout-note icon=false}
+## 📋 Pre-specification
+
+- Research questions, study design, and analysis plan defined **before** looking at outcomes (stratified by exposure status)
+- Pre-registration and publication of study protocols and analysis plans
+:::
+:::
 :::
 
-# GitHub Copilot: Your AI Coding Assistant
+::: {.column width="25%"}
+::: {.fragment}
+::: {.callout-note icon=false}
+## 🔀 Version Control & Code Sharing
 
-## What is GitHub Copilot?
-
-![GitHub Copilot overview (figure created via GPT-5).](images/copilot-infographic.png){#fig-copilot-info}
-
-## Disclaimer
-
-::: callout-important
-## COI
-
-I do not have any financial or personal relationships with Microsoft or OpenAI that could influence the content of this presentation.
+- Track changes made to your code
+- Make it publicly available (GitHub, GitLab, OSF, etc.)
+:::
+:::
 :::
 
-::: callout-caution
-## Some Important Notes Before We Dive In
+::: {.column width="25%"}
+::: {.fragment}
+::: {.callout-important icon=false}
+## 🔍 Code Review & Validation
 
--   AI is developing rapidly, so will GitHub Copilot
--   Copilot is not perfect; it can make mistakes
--   Always review suggestions carefully
-    -   See it as a helpful assistant/buddy, not a replacement to use your own intellect
--   Copilot does not replace human expertise (yet)
--   We will only cover the basics today
-    -   If you'd be intereted in a more advanced session, let us know via the course feedback form!
+- [**Systematic examination and independent verification of analytic code**]{style="color: #8B0000;"}
+:::
+:::
 :::
 
-## How to Access Copilot
+::: {.column width="25%"}
+::: {.fragment}
+::: {.callout-note icon=false}
+## 📝 Documentation & Reporting
 
--   **Sign up:** [github.com/features/copilot](https://github.com/features/copilot)
--   **Requirements:** GitHub account (free, subscription)
--   More detailed instructions can be found [on course website (section 2)](https://janickweberpals.github.io/icpe-git-2025/syllabus.html#github-copilot)
-
-![Sign up for GitHub Copilot.](images/github-copilot-signup.png){#fig-copilot-signup width="120%"}
-
-## How does Copilot work?
-
-![Illustration of principle GitHub Copilot functionality.](images/gh_copilot_works.png){#fig-gh-copilot-works width="120%"}
-
-## Where Can You Access GitHub Copilot?
-
--   **Visual Studio Code and GitHub Codespaces:** Popular code editor with Copilot extension
--    In VS Code: Extensions → Search "GitHub Copilot" → Install
-
-![GitHub Copilot extension in Visual Studio Code.](images/vscode_extension.png){#fig-vscode width="100%"}
-
-## Where Can You Access GitHub Copilot?
-
--   **RStudio:** Integrated with RStudio for R development
-
-![GitHub Copilot in RStudio.](images/rstudio_copilot.png){#fig-rstudio width="100%"}
-
-## Where Can You Access GitHub Copilot?
-
-![GitHub Copilot in RStudio.](images/copilot_on_github.png){#fig-github width="100%"}
-
-# How to Use Copilot To Enhance Your Work in Pharmacoepidemiology
-
-## Use Cases for Analytic Code
-
-::: callout-note
-### Code comprehension & review
-
--   Ask Copilot to explain complex code
-    -   *"Line coding is too long and complex"* no longer a valid argument to not provide code along with a research study to enhance transparency and reproducibility (e.g., in peer-review)
--   Translate code between languages (e.g., R to Python)
--   Summarize code changes
--   Suggest improvements or catch potential bugs
+- Structured, transparent reporting of methods and results
+- Follow reporting guidelines (e.g., RECORD-PE, STROBE, etc.)
+:::
+:::
 :::
 
-::: callout-note
-### Code development, testing and documentation
+::::
 
--   Write new functions, scripts, or analyses faster
--   Generate boilerplate code for data import, cleaning, modeling
--   Create unit tests for your functions (!!!)
--   Suggest test cases (simulated data) and edge scenarios
--   Auto-generate docstrings, comments, and README content
+## Code Review - The Why?
+
+-   Pharmacoepidemiology is a **quantitative** discipline
+-   Combines knowledge about data, study design, and statistical methods
+-   Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code is an essential tool and core competency
+-   Limited formal formal training in programming, version control, and software development best practices
+
+## Consequences of Poor Code Quality (i)
+
+| Severity | Consequence |
+|:--------:|:------------|
+| 🟡 **Best case** | [Inability to re-run the code *(by peers, collaborators, or your future self)*]{style="color: #DAA520;"} |
+| 📊 | [Implemented analytics do not reflect the intended study design and analysis plan]{style="color: #D2691E;"} |
+| ⚠️ | [Misspecification errors through incorrect coding of exposures, covariates, or outcomes]{style="color: #CC4400;"} |
+| 🔐 | [Security vulnerabilities through hardcoding of credentials, API keys, and secrets]{style="color: #B22222;"} |
+| 🔴 **Worst case** | [**Invalid results and conclusions, retractions, and loss of trust** in the scientific community]{style="color: #8B0000;"} |
+
+: {tbl-colwidths="[15,85]"}
+
+## Consequences of Poor Code Quality (ii)
+
+![Gander et al. JAMA. 2019;322(10):957-973. JAMA. 2020 Apr 21;323(15):1509-1510. doi: 10.1001/jama.2020.2328. @gander2020notice](images/jama_coding_error.png){#fig-jama-coding-error fig-alt="Following the publication, we were approached by a senior epidemiologist representing a for-profit large dialysis chain who was unable to reproduce our results. Through a series of exchanges and reviews of our publicly available analytic code, we identified a single line of code that had an error in a merge statement in SAS version 9.4 (SAS Institute Inc) in an early step of our study cohort creation when assigning the profit status of a dialysis facility to the time of the event. In the merge of the overall study cohort with a separate file that denoted wait listing, the column indicating the provider number of the dialysis facility from the wait list file overwrote the provider number of the dialysis facility in the study cohort file. Despite multiple analysts reviewing the code for the study, this particular code did not appear as an error. For analysts who code in other programming languages, such as R or Python, this particular merge procedure is handled differently and is not an error, but in SAS, there is no error or warning when the underlying data set has the same variable name as the new data set in the merge. Unfortunately, this resulted in a misclassification of provider numbers of some of the dialysis facilities and assigned the provider number of the transplant center, rather than the dialysis facility, decreasing the number of observations that could be linked to the dialysis facility–level data."}
+
+## Code Review and Validation
+
+**The Peer Review for Code**
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-note}
+## What is **Code Review**?
+- [Systematic examination of source code]{style="color: #B22222;"} by one or more reviewers
+- Aimed at identifying bugs, security vulnerabilities, logic errors, and deviations from the analysis plan
+- Ensures code is readable, maintainable, and well-documented
+:::
 :::
 
-## Use Cases for git
+::: {.column width="50%"}
+::: {.callout-tip}
+## What is **Code Validation**?
 
-::: callout-note
-## GitHub Copilot for Git
-
--   Automate common git workflows
-    -   Example: generate commit messages based on code changes (`git diff`)
--   Tracking
-    -   *"What changes were made to this repository in the last 5 commits?"*
--   Staging & committing
--   Advanced usage (create branches, help with pull requests and merging, etc.)
+- Confirmation that implemented code produces correct and intended results
+- Includes [unit-testing]{style="color: #B22222;"} with known inputs and expected outputs
+- Verifies that analytic code matches the pre-specified study design/protocol
+- Ensures reproducibility across environments and analysts (*will my code run and produce the same results on another computer?*)
+:::
 :::
 
-## Copilot Modes
+::::
 
-![Overview of [Copilot modes available in VSCode](https://github.blog/ai-and-ml/github-copilot/copilot-ask-edit-and-agent-modes-what-they-do-and-when-to-use-them/).](images/copilot_modes.png){#fig-copilot-modes width="80%"}
+# Code Review - The How?
 
-## Prompt engineering
+## Materials on Version Control and Code Sharing
 
-::: callout-tip
--   Start general, then get specific
-    - *Write a function in R. The function should do X and Y based on Z input.*
+::: {.callout-note}
+## Key References
 
--   Provide context and examples
-    - *Return a propensity score-matched cohort in a data.frame that contains the patient ID (patid), covariates (all columns that start with "c_") and the computed propensity score as "ps"*
+- [ICPE 2025 pre-conference course materials](https://janickweberpals.github.io/icpe-git-2025/)
 
--   Segment complex tasks into sub-tasks
-    - *First create a script called "xyz_function.R", then write the function, then test the function with dataset 1, address any potential errors and then test again*
+- Weberpals J and Wang SV. The FAIRification of research in real-world evidence: A practical introduction to reproducible analytic workflows using Git and R. Pharmacoepidemiol Drug Saf. 2024 Jan;33(1):e5740. [doi: 10.1002/pds.5740.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5740) [@weberpals2024fairification]
 
--   Iterate on prompts based on feedback
-    - *Please refactor the code such that it returns the age variable as a categori*
+- Tazare J, Wang SV, Gini R, et al. Sharing Is Caring? International Society for Pharmacoepidemiology Review and Recommendations for Sharing Programming Code. Pharmacoepidemiol Drug Saf. 2024 Sep;33(9):e5856. [doi: 10.1002/pds.5856.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5856) [@SharingCaring]
+
+- Schultze A, Tazare J. The role of programming code sharing in improving the transparency of medical research. BMJ. 2023 Oct 17;383:2402. [doi: 10.1136/bmj.p2402](https://www.bmj.com/content/383/bmj.p2402.long). [@schultze2023role]
+
+- [Pharmacoepidemiology and Drug Safety Special Issue on Pharmacoepidemiology Research Reproducibility](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1099-1557.research-reproducibility)
 :::
 
-More recommendations and examples can be found [here](https://docs.github.com/en/copilot/concepts/prompt-engineering).
+## Code Review - Pull Request Workflow
 
-## Model Choice {.fit-slide}
+![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
-```{r}
-#| label: tbl-model-comparison
+## Context: Repository Structure as Agent Memory
 
-model_comparison <- tibble::tribble(
-  ~Model,            ~`Task area`,                                   ~`Excels at (primary use case)`,                                              ~`Additional capabilities`,
-  "GPT-4.1",         "General-purpose coding and writing",          "Fast, accurate code completions and explanations",                          "Agent mode, vision",
-  "GPT-4o",          "General-purpose coding and writing",          "Fast completions and visual input understanding",                           "Agent mode, vision",
-  "o3",              "Deep reasoning and debugging",                "Multi-step problem solving and architecture-level code analysis",           "Reasoning",
-  "o4-mini",         "Fast help with simple or repetitive tasks",   "Fast, reliable answers to lightweight coding questions",                    "Lower latency",
-  "Claude Opus 4.1", "Deep reasoning and debugging",                "Complex problem-solving challenges, sophisticated reasoning",               "Reasoning, vision",
-  "Claude Opus 4",   "Deep reasoning and debugging",                "Complex problem-solving challenges, sophisticated reasoning",               "Reasoning, vision",
-  "Claude Sonnet 3.5", "Fast help with simple or repetitive tasks", "Quick responses for code, syntax, and documentation",                     "Agent mode, vision",
-  "Claude Sonnet 3.7", "Deep reasoning and debugging",                "Structured reasoning across large, complex codebases",                      "Agent mode, vision",
-  "Claude Sonnet 4", "Deep reasoning and debugging",                "Performance and practicality, perfectly balanced for coding workflows",   "Agent mode, vision",
-  "Gemini 2.5 Pro",  "Deep reasoning and debugging",                "Complex code generation, debugging, and research workflows",                "Reasoning, vision",
-  "Gemini 2.0 Flash","Working with visuals (diagrams, screenshots)", "Real-time responses and visual reasoning for UI and diagram-based tasks", "Vision"
-)
+:::: {.columns}
 
-model_comparison |> 
-  gt() |> 
-  tab_caption("Comparison of GitHub Copilot models.") |> 
-  tab_footnote("Taken from https://docs.github.com/en/copilot/reference/ai-models/model-comparison") |> 
-  tab_style(
-    style = list(
-      cell_text(weight = "bold")
-      ),
-    locations = cells_column_labels(columns = everything())
-    )
-```
+::: {.column width="50%"}
+[A well-organized repository gives a coding agent the **full context** of a study:]{style="font-size: 0.8em;"}
 
-
-## Copilot in Action (Ask Mode)
-
-**Example use case**: Comprehend and [review existing code](https://github.com/abduazizR/PEpiwithR/blob/main/applied-example.qmd)
-
--   Code example taken from [Abdelaziz et al., PDS 2024](https://onlinelibrary.wiley.com/doi/10.1002/pds.5728) [@abdelaziz2024optimizing]
-
-> "To illustrate an application of the approach, we created and **analyzed an active comparator new user cohort**. Briefly, we implemented an active comparator new user design comparing the risk of bladder cancer of sodium–glucose co-transporter 2 (SGLT-2) inhibitors and glucagon-like peptide 1 receptor agonists (GLP-1RAs) inspired by a recent study from Abrahami et al. [@abrahami2022sodium] \[...\]"
-
-## Copilot in Action (Ask Mode)
-
-
-**Example**: Comprehend and [review existing code](https://github.com/abduazizR/PEpiwithR/blob/main/applied-example.qmd)
-
-::: callout-note
-## Example prompt
-*How did the author define the continuous enrollment periods.
-Provide details and show me the code that was used to derive the continuous enrollment periods.*
+::: {style="font-size: 0.7em;"}
+- 📄 **Protocol & analysis plan** — defines the *intended* study design the code should implement
+- 💻 **Analysis scripts** — the code to be reviewed, in logical order
+- 📦 **Dependencies & environment** — ensures the agent understands the software stack
+- 📚 **References & documentation** — provides scientific and methodological context
+- 🗂️ **Data dictionaries** — clarifies variable names, codings, and units
 :::
 
-![Example code/GitHub repository by [Abdelaziz et al.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5728) [@abdelaziz2024optimizing]](images/ask-mode-repo-snaphsot.png){#fig-review-repository width="80%"}
-
-## Copilot in Action (Ask Mode)
-
-{{< video "https://www.youtube-nocookie.com/embed/xvhYmGz_x74?si=fS86anQWzkdXIXUa" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
-
-## Copilot in Action (Agent Mode)
-
-**Example**: Simulate dataset and create a Table 1
-
-::: callout-note
-## Example prompt
-Generate a simulated datasets (data.frame) using the R programming language. The simulated dataset should resemble the main characteristics and baseline distributions of a fictional randomized trial with two treatment arms and a few baseline covariates, including age (continuous: mean 65), sex (categorical: male (40%) and female (60%)), disease stage (ordinal: I, II, III, IV, with each 25% prevalence) and biomarker status (binary: TRUE (30%), FALSE (70%)).
-
-Use a step by step approach:
-
-1. Create a new file called “01_simulate_data.R”
-2. Simulate the dataset and do not store the simulated dataset
-3. Illustrate the baseline characteristics and distributions by treatment arm using the tbl_summary() function of the gtsummary package. You don’t need to execute the code
+::: {.callout-tip icon=false style="font-size: 0.7em;"}
+## 🤖 Why it matters
+The richer the context, the more targeted and accurate the agentic code review
+:::
 :::
 
+::: {.column width="50%"}
+![An organized repository structure provides rich context about the intended study & analysis](images/repo_structure.png){#fig-repo-structure width="100%" style="max-height: 500px; object-fit: contain;"}
+:::
 
-## Copilot in Action (Agent Mode)
+::::
 
-{{< video "https://www.youtube-nocookie.com/embed/dfUV-rFQ38U?si=KDmvimsUecRmJDf-" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
+## Claude Code - multiagentic code review
 
-## Copilot in Action (Edit Mode)
+{{< video "https://www.youtube-nocookie.com/embed/RKsADl0ZC3Y?si=y8GEOERtR3P9-eMm" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
-{{< video "https://www.youtube-nocookie.com/embed/Da1we9DFVKE?si=njIYmeRzZXTCTasW" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
-
-## Copilot in Action (Git Workflow)
-
-{{< video "https://www.youtube-nocookie.com/embed/C_WMDhNw9Tg?si=O6p34AkMSHJFiSR6" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
-
-## Questions?
-
-Give it a try in your next project!
-
--   [Overview](https://github.com/features/copilot)
--   [Documentation](https://docs.github.com/copilot)
--   [Tutorials](https://github.com/features/copilot/tutorials)
+Video courtesy of Anthropic
 
 ## References
