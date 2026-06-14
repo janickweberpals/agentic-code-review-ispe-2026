@@ -29,7 +29,7 @@ library(dplyr)
 
 ## Slide deck
 
-<iframe src="code_review_presentation.html" frameborder="0" width="725" height="440.6641" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+<iframe src="https://janickweberpals.github.io/agentic-code-review-ispe-2026/code_review_presentation.html frameborder="0" width="725" height="440.6641" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
 
 </iframe>
 
