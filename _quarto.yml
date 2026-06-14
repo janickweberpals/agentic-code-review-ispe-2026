@@ -1,5 +1,8 @@
 project:
   type: book
+  render:
+    - "*.qmd"
+    - "mock-study/*.qmd"
 
 book:
   title: "Agentic Code Review and Validation"
