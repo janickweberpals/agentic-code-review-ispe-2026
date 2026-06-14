@@ -18,5 +18,291 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Agentic Code Review and Validation</span>"
     ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html",
+    "href": "mock-study/01_csp.html",
+    "title": "2  Clinical Study Protocol",
+    "section": "",
+    "text": "Title page\nThis protocol is based on the HARmonized Protocol Template to Enhance Reproducibility (HARPER) of Hypothesis Evaluating Real-World Evidence Studies on Treatment Effects: A Good Practices Report of a Joint ISPE/ISPOR Task Force (HARPER) protocol by Wang SV et al.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#title",
+    "href": "mock-study/01_csp.html#title",
+    "title": "2  Clinical Study Protocol",
+    "section": "Title",
+    "text": "Title\n[Mock Study] Comparative Effectiveness of Drug A vs. Drug B — Adapted to Illustrate Agentic Code Review",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#research-question-and-objectives",
+    "href": "mock-study/01_csp.html#research-question-and-objectives",
+    "title": "2  Clinical Study Protocol",
+    "section": "Research question and objectives",
+    "text": "Research question and objectives\nTo evaluate the comparative effect of Drug A vs. Drug B on the composite primary endpoint of all-cause mortality or hospitalization for heart failure in a simulated cohort.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#protocol-version",
+    "href": "mock-study/01_csp.html#protocol-version",
+    "title": "2  Clinical Study Protocol",
+    "section": "Protocol version",
+    "text": "Protocol version\nVersion 1",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#contributors",
+    "href": "mock-study/01_csp.html#contributors",
+    "title": "2  Clinical Study Protocol",
+    "section": "Contributors",
+    "text": "Contributors\nPrimary investigator contact information: [REDACTED]\nContributor names: [REDACTED]",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#study-registration",
+    "href": "mock-study/01_csp.html#study-registration",
+    "title": "2  Clinical Study Protocol",
+    "section": "Study registration",
+    "text": "Study registration\nSite: N/A\nIdentifier: N/A",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#sponsor",
+    "href": "mock-study/01_csp.html#sponsor",
+    "title": "2  Clinical Study Protocol",
+    "section": "Sponsor",
+    "text": "Sponsor\nOrganization: N/A\nContact: N/A",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#conflict-of-interest",
+    "href": "mock-study/01_csp.html#conflict-of-interest",
+    "title": "2  Clinical Study Protocol",
+    "section": "Conflict of interest",
+    "text": "Conflict of interest\n[REDACTED]",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#study-design",
+    "href": "mock-study/01_csp.html#study-design",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.1 Study design",
+    "text": "8.1 Study design\nResearch design: New-user active-comparator cohort study.\nRationale for study design choice: The new-user active-comparator design addresses confounding by indication through judicious selection of a comparator group and subsequent statistical balancing of measured confounders via a propensity score. Restricting to new users avoids prevalent-user bias (depletion of susceptibles). The overlap (ATO) estimand is chosen because both treatment groups are represented throughout the propensity-score distribution, making equipoise-based comparison most meaningful.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#study-design-diagram",
+    "href": "mock-study/01_csp.html#study-design-diagram",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.2 Study design diagram",
+    "text": "8.2 Study design diagram\nThe study window spans from a 365-day washout period before index date (time 0) through up to 365 days of follow-up. Baseline covariates are assessed in the window [–365, 0]; treatment is assigned at time 0 (first dispensing); the primary composite event or censoring occurs during [1, 365].",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#setting",
+    "href": "mock-study/01_csp.html#setting",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.3 Setting",
+    "text": "8.3 Setting\n\n8.3.1 Context and rationale for definition of time 0\nTime 0 is defined as the date of first dispensing of Drug A or Drug B for each patient. The new-user requirement is operationalized by a 12-month washout window with no prior dispensing of either drug.\n\n\nShow the code\ndplyr::tibble(\n  `Study population`     = c(\"Drug A initiators\", \"Drug B initiators\"),\n  `Time anchor`          = c(\"First dispensing of Drug A\", \"First dispensing of Drug B\"),\n  `Number of entries`    = c(\"Single entry\", \"Single entry\"),\n  `Type of entry`        = c(\"Incident use\", \"Incident use\"),\n  `Washout window (days)`= c(\"[-365, -1]\", \"[-365, -1]\"),\n  `Variable in data`     = c(\"`treatment = 1`\", \"`treatment = 0`\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.1: Operational Definition of Time 0 (index date) and other primary time anchors\n\n\n\n\n\n\n\n\n\nStudy population\nTime anchor\nNumber of entries\nType of entry\nWashout window (days)\nVariable in data\n\n\n\n\nDrug A initiators\nFirst dispensing of Drug A\nSingle entry\nIncident use\n[-365, -1]\n`treatment = 1`\n\n\nDrug B initiators\nFirst dispensing of Drug B\nSingle entry\nIncident use\n[-365, -1]\n`treatment = 0`\n\n\n\n\n\n\n\n\n\n\n\n\n8.3.2 Context and rationale for study inclusion criteria\nPatients are required to be new users (no prior dispensing of Drug A or Drug B within 365 days before index date), aged 30–90 years, and to have a documented chronic disease (T2DM setting). These criteria are simulated in generate_cohort() via the age clipping and treatment-assignment mechanism.\n\n\nShow the code\ndplyr::tibble(\n  Criterion          = c(\"New user\", \"Age\"),\n  Details            = c(\n    \"No dispensing of Drug A or Drug B in the 365-day washout window\",\n    \"Age 30–90 years at cohort entry (simulated via `rnorm(n, 65, 10)` clipped to [30, 90])\"\n  ),\n  `Order of application` = c(\"Before index date\", \"At index date\"),\n  `Assessment window`    = c(\"[-365, -1]\", \"[0, 0]\"),\n  `Applied to`           = c(\"Both arms\", \"Both arms\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.2: Operational Definitions of Inclusion Criteria\n\n\n\n\n\n\n\n\n\nCriterion\nDetails\nOrder of application\nAssessment window\nApplied to\n\n\n\n\nNew user\nNo dispensing of Drug A or Drug B in the 365-day washout window\nBefore index date\n[-365, -1]\nBoth arms\n\n\nAge\nAge 30–90 years at cohort entry (simulated via `rnorm(n, 65, 10)` clipped to [30, 90])\nAt index date\n[0, 0]\nBoth arms\n\n\n\n\n\n\n\n\n\n\n\n\n8.3.3 Context and rationale for study exclusion criteria\nFor this mock study, no explicit exclusion criteria are implemented beyond the new-user and age inclusion criteria above. In the source protocol, patients were excluded for prior use of the comparator drug, end-stage organ disease, and certain contraindications.\n\n\nShow the code\ndplyr::tibble(\n  Criterion = c(\"(None implemented in mock)\"),\n  Details   = c(\"The mock study omits disease-specific exclusion criteria present in the source protocol.\"),\n  `Assessment window` = c(\"N/A\"),\n  `Applied to`        = c(\"N/A\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.3: Operational Definitions of Exclusion Criteria\n\n\n\n\n\n\n\n\n\nCriterion\nDetails\nAssessment window\nApplied to\n\n\n\n\n(None implemented in mock)\nThe mock study omits disease-specific exclusion criteria present in the source protocol.\nN/A\nN/A",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#variables",
+    "href": "mock-study/01_csp.html#variables",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.4 Variables",
+    "text": "8.4 Variables\n\n8.4.1 Context and rationale for exposure(s) of interest\nTreatment group is assigned at time 0 via a logistic-regression-based propensity mechanism that embeds confounding by indication: Drug A (the newer agent) is preferentially initiated in younger patients with higher BMI and lower comorbidity burden. This mimics real-world prescribing behaviour and makes PS-based confounding adjustment necessary.\nAlgorithm to define duration of exposure effect: A 45-day grace period is applied. Informative censoring is modelled as exponential dropout with mean 400 days, representing disenrollment or treatment discontinuation.\n\n\nShow the code\ndplyr::tibble(\n  `Exposure group`   = c(\"Drug A\", \"Drug B\"),\n  `R variable`       = c(\"`treatment = 1`; `treatment_label = 'Drug A'`\",\n                          \"`treatment = 0`; `treatment_label = 'Drug B'`\"),\n  `Type of entry`    = c(\"Incident (new user)\", \"Incident (new user)\"),\n  `Washout window`   = c(\"[-365, -1]\", \"[-365, -1]\"),\n  `Grace period`     = c(\"45 days\", \"45 days\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.4: Operational Definitions of Exposure\n\n\n\n\n\n\n\n\n\nExposure group\nR variable\nType of entry\nWashout window\nGrace period\n\n\n\n\nDrug A\n`treatment = 1`; `treatment_label = 'Drug A'`\nIncident (new user)\n[-365, -1]\n45 days\n\n\nDrug B\n`treatment = 0`; `treatment_label = 'Drug B'`\nIncident (new user)\n[-365, -1]\n45 days\n\n\n\n\n\n\n\n\n\n\n\n\n8.4.2 Context and rationale for outcome(s) of interest\nThe primary outcome is the composite of all-cause mortality or hospitalization for heart failure, whichever occurs first. This is simulated using a Weibull proportional-hazards model (simsurv::simsurv) with a baseline scale calibrated to produce a 1-year cumulative incidence of approximately 3.4% in the Drug B arm, matching the published source study.\n\n\nShow the code\ndplyr::tibble(\n  `Outcome`          = c(\"HF hospitalization or all-cause mortality (composite)\"),\n  `Primary?`         = c(\"Yes\"),\n  `Type`             = c(\"Time-to-event\"),\n  `R variable`       = c(\"`status` (1 = event, 0 = censored); `time` (follow-up days)\"),\n  `Washout window`   = c(\"N/A\"),\n  `Simulation model` = c(\"Weibull(lambda = 1.8e-5, gamma = 1.15); maxt = 365 days\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.5: Operational Definitions of Outcome\n\n\n\n\n\n\n\n\n\nOutcome\nPrimary?\nType\nR variable\nWashout window\nSimulation model\n\n\n\n\nHF hospitalization or all-cause mortality (composite)\nYes\nTime-to-event\n`status` (1 = event, 0 = censored); `time` (follow-up days)\nN/A\nWeibull(lambda = 1.8e-5, gamma = 1.15); maxt = 365 days\n\n\n\n\n\n\n\n\n\n\n\n\n8.4.3 Context and rationale for follow up\nFollow-up begins 1 day after cohort entry (time 0) and ends at the earliest of: the primary composite event, informative censoring (dropout), or the administrative end of study at day 365. A 45-day grace period is allowed for treatment gaps.\n\n\nShow the code\ndplyr::tibble(\n  `Rule`                           = c(\n    \"Follow-up start\",\n    \"Primary composite event\",\n    \"Informative censoring (dropout)\",\n    \"Administrative censoring\"\n  ),\n  `Definition`                     = c(\n    \"Day 1 after cohort entry (time 0 + 1 day)\",\n    \"First occurrence of HF hospitalization or all-cause mortality\",\n    \"Exponential(rate = 1/400); models disenrollment or discontinuation within the 45-day grace period\",\n    \"Day 365 (52 weeks)\"\n  ),\n  `R implementation`               = c(\n    \"`time = min(event_time, cens_time, 365)`\",\n    \"`status = 1` if event_time ≤ cens_time AND ≤ 365\",\n    \"`cens_time ~ rexp(n, rate = 1/400)`\",\n    \"`maxt = 365` in `simsurv::simsurv()`\"\n  )\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.6: Operational Definitions of Follow up\n\n\n\n\n\n\n\n\n\nRule\nDefinition\nR implementation\n\n\n\n\nFollow-up start\nDay 1 after cohort entry (time 0 + 1 day)\n`time = min(event_time, cens_time, 365)`\n\n\nPrimary composite event\nFirst occurrence of HF hospitalization or all-cause mortality\n`status = 1` if event_time ≤ cens_time AND ≤ 365\n\n\nInformative censoring (dropout)\nExponential(rate = 1/400); models disenrollment or discontinuation within the 45-day grace period\n`cens_time ~ rexp(n, rate = 1/400)`\n\n\nAdministrative censoring\nDay 365 (52 weeks)\n`maxt = 365` in `simsurv::simsurv()`\n\n\n\n\n\n\n\n\n\n\n\n\n8.4.4 Context and rationale for covariates\nAll covariates are measured at cohort entry (baseline) and are used in both the propensity-score logistic regression model and the Table 1 balance assessment. Covariates were selected to represent the confounder domains adjusted for in the source study: demographics, cardiometabolic burden, diabetes complications, cardiovascular/kidney disease, other comorbidities, concomitant medications, and healthcare utilization.\n\n\nShow the code\ndplyr::tribble(\n  ~Domain,                     ~Variable,              ~Label,                             ~Type,       ~Distribution,\n  \"Demographics\",              \"`age`\",                \"Age, years\",                       \"Continuous\",\"Normal(65, 10), clipped [30, 90]\",\n  \"Demographics\",              \"`female`\",             \"Female sex\",                       \"Binary\",    \"Bernoulli(0.48)\",\n  \"Demographics\",              \"`race`\",               \"Race\",                             \"Categorical\",\"White 70%, Black 18%, Other 12%\",\n  \"Demographics\",              \"`region`\",             \"US region\",                        \"Categorical\",\"NE 20%, MW 23%, S 38%, W 19%\",\n  \"Cardiometabolic burden\",    \"`bmi`\",                \"Body mass index, kg/m²\",           \"Continuous\",\"Normal(33, 5), clipped [18, 60]\",\n  \"Cardiometabolic burden\",    \"`prior_hf_hosp`\",      \"Prior HF hospitalization\",         \"Binary\",    \"Bernoulli(0.06)\",\n  \"Cardiometabolic burden\",    \"`diuretic_use`\",       \"Diuretic use\",                     \"Binary\",    \"Bernoulli(0.28)\",\n  \"Diabetes complications\",    \"`nephropathy`\",        \"Diabetic nephropathy\",             \"Binary\",    \"Bernoulli(0.15)\",\n  \"Diabetes complications\",    \"`neuropathy`\",         \"Diabetic neuropathy\",              \"Binary\",    \"Bernoulli(0.22)\",\n  \"Diabetes complications\",    \"`retinopathy`\",        \"Diabetic retinopathy\",             \"Binary\",    \"Bernoulli(0.12)\",\n  \"Diabetes complications\",    \"`foot_ulcer`\",         \"Foot ulcer\",                       \"Binary\",    \"Bernoulli(0.05)\",\n  \"Diabetes complications\",    \"`insulin_use`\",        \"Insulin use\",                      \"Binary\",    \"Bernoulli(0.30)\",\n  \"CV / kidney disease\",       \"`pad`\",                \"Peripheral arterial disease\",      \"Binary\",    \"Bernoulli(0.10)\",\n  \"CV / kidney disease\",       \"`afib`\",               \"Atrial fibrillation\",              \"Binary\",    \"Bernoulli(0.12)\",\n  \"CV / kidney disease\",       \"`cardiomyopathy`\",     \"Cardiomyopathy\",                   \"Binary\",    \"Bernoulli(0.07)\",\n  \"CV / kidney disease\",       \"`ckd`\",                \"Chronic kidney disease\",           \"Binary\",    \"Bernoulli(0.20)\",\n  \"Other comorbidities\",       \"`copd`\",               \"COPD\",                             \"Binary\",    \"Bernoulli(0.13)\",\n  \"Other comorbidities\",       \"`depression`\",         \"Depression\",                       \"Binary\",    \"Bernoulli(0.18)\",\n  \"Other comorbidities\",       \"`dementia`\",           \"Dementia\",                         \"Binary\",    \"Bernoulli(0.04)\",\n  \"Concomitant medications\",   \"`metformin`\",          \"Metformin\",                        \"Binary\",    \"Bernoulli(0.72)\",\n  \"Concomitant medications\",   \"`sulfonylurea`\",       \"Sulfonylurea\",                     \"Binary\",    \"Bernoulli(0.35)\",\n  \"Concomitant medications\",   \"`sglt2i`\",             \"SGLT2 inhibitor\",                  \"Binary\",    \"Bernoulli(0.30)\",\n  \"Concomitant medications\",   \"`statin`\",             \"Statin\",                           \"Binary\",    \"Bernoulli(0.65)\",\n  \"Concomitant medications\",   \"`anticoagulant`\",      \"Anticoagulant\",                    \"Binary\",    \"Bernoulli(0.14)\",\n  \"Healthcare utilization\",    \"`n_hospitalizations`\", \"No. hospitalizations (prior yr)\",  \"Count\",     \"Poisson(0.4)\",\n  \"Healthcare utilization\",    \"`n_ed_visits`\",        \"No. ED visits (prior yr)\",         \"Count\",     \"Poisson(0.6)\",\n  \"Healthcare utilization\",    \"`n_distinct_meds`\",    \"No. distinct medications\",         \"Count\",     \"Poisson(8)\",\n  \"Healthcare utilization\",    \"`comorbidity_index`\",  \"Combined comorbidity index\",       \"Continuous\",\"max(Normal(2, 1.5), 0)\"\n) |&gt;\n  gt::gt() |&gt;\n  gt::tab_row_group(label = \"Healthcare utilization\",   rows = Domain == \"Healthcare utilization\") |&gt;\n  gt::tab_row_group(label = \"Concomitant medications\",  rows = Domain == \"Concomitant medications\") |&gt;\n  gt::tab_row_group(label = \"Other comorbidities\",      rows = Domain == \"Other comorbidities\") |&gt;\n  gt::tab_row_group(label = \"CV / kidney disease\",      rows = Domain == \"CV / kidney disease\") |&gt;\n  gt::tab_row_group(label = \"Diabetes complications\",   rows = Domain == \"Diabetes complications\") |&gt;\n  gt::tab_row_group(label = \"Cardiometabolic burden\",   rows = Domain == \"Cardiometabolic burden\") |&gt;\n  gt::tab_row_group(label = \"Demographics\",             rows = Domain == \"Demographics\") |&gt;\n  gt::cols_hide(Domain) |&gt;\n  gt_style()\n\n\n\n\nTable 8.7: Operational Definitions of Covariates\n\n\n\n\n\n\n\n\n\nVariable\nLabel\nType\nDistribution\n\n\n\n\nDemographics\n\n\n`age`\nAge, years\nContinuous\nNormal(65, 10), clipped [30, 90]\n\n\n`female`\nFemale sex\nBinary\nBernoulli(0.48)\n\n\n`race`\nRace\nCategorical\nWhite 70%, Black 18%, Other 12%\n\n\n`region`\nUS region\nCategorical\nNE 20%, MW 23%, S 38%, W 19%\n\n\nCardiometabolic burden\n\n\n`bmi`\nBody mass index, kg/m²\nContinuous\nNormal(33, 5), clipped [18, 60]\n\n\n`prior_hf_hosp`\nPrior HF hospitalization\nBinary\nBernoulli(0.06)\n\n\n`diuretic_use`\nDiuretic use\nBinary\nBernoulli(0.28)\n\n\nDiabetes complications\n\n\n`nephropathy`\nDiabetic nephropathy\nBinary\nBernoulli(0.15)\n\n\n`neuropathy`\nDiabetic neuropathy\nBinary\nBernoulli(0.22)\n\n\n`retinopathy`\nDiabetic retinopathy\nBinary\nBernoulli(0.12)\n\n\n`foot_ulcer`\nFoot ulcer\nBinary\nBernoulli(0.05)\n\n\n`insulin_use`\nInsulin use\nBinary\nBernoulli(0.30)\n\n\nCV / kidney disease\n\n\n`pad`\nPeripheral arterial disease\nBinary\nBernoulli(0.10)\n\n\n`afib`\nAtrial fibrillation\nBinary\nBernoulli(0.12)\n\n\n`cardiomyopathy`\nCardiomyopathy\nBinary\nBernoulli(0.07)\n\n\n`ckd`\nChronic kidney disease\nBinary\nBernoulli(0.20)\n\n\nOther comorbidities\n\n\n`copd`\nCOPD\nBinary\nBernoulli(0.13)\n\n\n`depression`\nDepression\nBinary\nBernoulli(0.18)\n\n\n`dementia`\nDementia\nBinary\nBernoulli(0.04)\n\n\nConcomitant medications\n\n\n`metformin`\nMetformin\nBinary\nBernoulli(0.72)\n\n\n`sulfonylurea`\nSulfonylurea\nBinary\nBernoulli(0.35)\n\n\n`sglt2i`\nSGLT2 inhibitor\nBinary\nBernoulli(0.30)\n\n\n`statin`\nStatin\nBinary\nBernoulli(0.65)\n\n\n`anticoagulant`\nAnticoagulant\nBinary\nBernoulli(0.14)\n\n\nHealthcare utilization\n\n\n`n_hospitalizations`\nNo. hospitalizations (prior yr)\nCount\nPoisson(0.4)\n\n\n`n_ed_visits`\nNo. ED visits (prior yr)\nCount\nPoisson(0.6)\n\n\n`n_distinct_meds`\nNo. distinct medications\nCount\nPoisson(8)\n\n\n`comorbidity_index`\nCombined comorbidity index\nContinuous\nmax(Normal(2, 1.5), 0)",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#data-analysis",
+    "href": "mock-study/01_csp.html#data-analysis",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.5 Data analysis",
+    "text": "8.5 Data analysis\n\n8.5.1 Context and rationale for analysis plan\nThe estimand of interest is the average treatment effect in the overlap (ATO) population — patients for whom either treatment would realistically have been prescribed (clinical equipoise). This is achieved through propensity-score overlap weighting, which up-weights patients near the decision boundary and avoids the extrapolation problems of ATT or ATE weighting with extreme scores.\n\nShow the code\n# A. Primary\ndplyr::tibble(\n  Element = c(\n    \"Hypothesis\",\n    \"Exposure contrast\",\n    \"Outcome\",\n    \"Analytic software\",\n    \"Propensity score model\",\n    \"Confounding adjustment\",\n    \"Outcome model\",\n    \"Standard errors\",\n    \"Missing data\",\n    \"Subgroup analyses\"\n  ),\n  Specification = c(\n    \"Drug A is not meaningfully different from Drug B on the composite endpoint (non-inferiority).\",\n    \"Drug A vs. Drug B (new users).\",\n    \"Composite: all-cause mortality or HF hospitalization (time-to-event).\",\n    \"R ≥ 4.5; packages: WeightIt, cobalt, gtsummary, survival, ggsurvfit (see Section 9).\",\n    \"Logistic regression: `treatment ~ age + female + race + region + bmi + prior_hf_hosp + diuretic_use + nephropathy + neuropathy + retinopathy + foot_ulcer + insulin_use + pad + afib + cardiomyopathy + ckd + copd + depression + dementia + metformin + sulfonylurea + sglt2i + statin + anticoagulant + n_hospitalizations + n_ed_visits + n_distinct_meds + comorbidity_index`; implemented via `WeightIt::weightit(method = 'glm', estimand = 'ATO')`.\",\n    \"Propensity-score overlap (ATO) weighting; balance assessed with SMDs and Love plot (cobalt).\",\n    \"Weighted Cox PH: `survival::coxph(Surv(time, status) ~ treatment_label, weights = ato_weight, robust = TRUE)`.\",\n    \"Robust (sandwich) standard errors to account for weighting.\",\n    \"No missing data (fully simulated dataset).\",\n    \"None implemented in mock study.\"\n  )\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n# B. Secondary (not implemented)\ndplyr::tibble(\n  Element       = c(\"Note\"),\n  Specification = c(\"Secondary analyses are not implemented in this mock study.\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.8: Primary, secondary, and subgroup analysis specification\n\n\n\n\n\n\n\n\n\n\n(a) A. Primary analysis\n\n\n\n\n\nElement\nSpecification\n\n\n\n\nHypothesis\nDrug A is not meaningfully different from Drug B on the composite endpoint (non-inferiority).\n\n\nExposure contrast\nDrug A vs. Drug B (new users).\n\n\nOutcome\nComposite: all-cause mortality or HF hospitalization (time-to-event).\n\n\nAnalytic software\nR ≥ 4.5; packages: WeightIt, cobalt, gtsummary, survival, ggsurvfit (see Section 9).\n\n\nPropensity score model\nLogistic regression: `treatment ~ age + female + race + region + bmi + prior_hf_hosp + diuretic_use + nephropathy + neuropathy + retinopathy + foot_ulcer + insulin_use + pad + afib + cardiomyopathy + ckd + copd + depression + dementia + metformin + sulfonylurea + sglt2i + statin + anticoagulant + n_hospitalizations + n_ed_visits + n_distinct_meds + comorbidity_index`; implemented via `WeightIt::weightit(method = 'glm', estimand = 'ATO')`.\n\n\nConfounding adjustment\nPropensity-score overlap (ATO) weighting; balance assessed with SMDs and Love plot (cobalt).\n\n\nOutcome model\nWeighted Cox PH: `survival::coxph(Surv(time, status) ~ treatment_label, weights = ato_weight, robust = TRUE)`.\n\n\nStandard errors\nRobust (sandwich) standard errors to account for weighting.\n\n\nMissing data\nNo missing data (fully simulated dataset).\n\n\nSubgroup analyses\nNone implemented in mock study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) B. Secondary analysis\n\n\n\n\n\nElement\nSpecification\n\n\n\n\nNote\nSecondary analyses are not implemented in this mock study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\ndplyr::tibble(\n  Analysis   = c(\"(None implemented in mock)\"),\n  Rationale  = c(\"Sensitivity analyses from the source protocol (e.g. ATT weighting, 90-day follow-up, prior event rate ratio) are not implemented in this mock study.\"),\n  Strengths  = c(\"N/A\"),\n  Limitations = c(\"N/A\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.9: Sensitivity analyses — rationale, strengths and limitations\n\n\n\n\n\n\n\n\n\nAnalysis\nRationale\nStrengths\nLimitations\n\n\n\n\n(None implemented in mock)\nSensitivity analyses from the source protocol (e.g. ATT weighting, 90-day follow-up, prior event rate ratio) are not implemented in this mock study.\nN/A\nN/A",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#data-sources",
+    "href": "mock-study/01_csp.html#data-sources",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.6 Data sources",
+    "text": "8.6 Data sources\n\n8.6.1 Context and rationale for data sources\nReason for selection: Fully simulated data are used to enable reproducible teaching without the need for restricted real-world data access.\nStrengths: The simulation is calibrated to approximate a published source study in terms of cohort size, confounding structure, event rates, and effect size. It is generated deterministically from a fixed seed (seed = 20260614).\nLimitations: Simulated data cannot capture real-world complexities such as informative loss to follow-up correlated with covariates, measurement error, unmeasured confounders, or data source heterogeneity across claims databases.\nData source provenance: All data are generated in memory by generate_cohort() in mock-study/02_data_generation.R. Nothing is written to disk.\n\n\nShow the code\ndplyr::tibble(\n  `Data source`          = c(\"Simulated cohort\"),\n  `Study period`         = c(\"Not applicable (synthetic)\"),\n  `Eligible entry period`= c(\"Not applicable\"),\n  `Data version`         = c(\"Seed = 20260614; generated 2026-06-14\"),\n  `Data linkage`         = c(\"None\"),\n  `Common data model`    = c(\"None\"),\n  `Software`             = c(\"R ≥ 4.5; renv for package management\")\n) |&gt;\n  gt::gt() |&gt;\n  gt_style()\n\n\n\n\nTable 8.10: Metadata about data sources and software\n\n\n\n\n\n\n\n\n\nData source\nStudy period\nEligible entry period\nData version\nData linkage\nCommon data model\nSoftware\n\n\n\n\nSimulated cohort\nNot applicable (synthetic)\nNot applicable\nSeed = 20260614; generated 2026-06-14\nNone\nNone\nR ≥ 4.5; renv for package management",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#data-management",
+    "href": "mock-study/01_csp.html#data-management",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.7 Data management",
+    "text": "8.7 Data management\nAll data are generated in memory within the R session at analysis time. No patient data are stored on disk. Package versions are locked via renv to ensure reproducibility across R environments.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#quality-control",
+    "href": "mock-study/01_csp.html#quality-control",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.8 Quality control",
+    "text": "8.8 Quality control\nThe simulated data are validated by inspecting the ATO-weighted results in 03_primary_endpoint_analysis.qmd. Target benchmarks: 1-year risk ≈ 3.4% (Drug B arm), ATO-weighted HR ≈ 0.86 (95% CI includes 1.0).",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#study-size-and-feasibility",
+    "href": "mock-study/01_csp.html#study-size-and-feasibility",
+    "title": "2  Clinical Study Protocol",
+    "section": "8.9 Study size and feasibility",
+    "text": "8.9 Study size and feasibility\nThe cohort size of n = 28,100 is calibrated to a published source study. With approximately 500–600 events, the study is adequately powered to estimate the HR with a 95% CI width of approximately ±0.15 on the log scale.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#loaded-packages",
+    "href": "mock-study/01_csp.html#loaded-packages",
+    "title": "2  Clinical Study Protocol",
+    "section": "14.1 Loaded packages",
+    "text": "14.1 Loaded packages\n\n\nShow the code\nsubset(\n  as.data.frame(utils::installed.packages()[, c(\"Package\", \"Version\")]),\n  Package %in% c(\"dplyr\", \"gt\", \"simsurv\", \"WeightIt\", \"cobalt\",\n                 \"survey\", \"gtsummary\", \"survival\", \"ggsurvfit\", \"ggplot2\")\n)\n\n\n             Package Version\ncobalt        cobalt   4.6.3\ndplyr          dplyr   1.2.1\nggplot2      ggplot2   4.0.3\nggsurvfit  ggsurvfit   1.2.0\ngt                gt   1.3.0\ngtsummary  gtsummary   2.5.1\nsimsurv      simsurv   1.0.1\nsurvey        survey     4.5\nsurvival    survival   3.8-6\nWeightIt    WeightIt   1.7.0\nsurvival.1  survival   3.8-3",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#session-info-1",
+    "href": "mock-study/01_csp.html#session-info-1",
+    "title": "2  Clinical Study Protocol",
+    "section": "14.2 Session info",
+    "text": "14.2 Session info\n\n\nShow the code\nutils::sessionInfo()\n\n\nR version 4.5.1 (2025-06-13)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 24.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices datasets  utils     methods   base     \n\nother attached packages:\n[1] gt_1.3.0    dplyr_1.2.1\n\nloaded via a namespace (and not attached):\n [1] vctrs_0.7.3       cli_3.6.6         knitr_1.51        rlang_1.2.0      \n [5] xfun_0.57         renv_1.2.3        generics_0.1.4    jsonlite_2.0.0   \n [9] glue_1.8.1        htmltools_0.5.9   sass_0.4.10       rmarkdown_2.31   \n[13] evaluate_1.0.5    tibble_3.3.1      fastmap_1.2.0     yaml_2.3.12      \n[17] lifecycle_1.0.5   compiler_4.5.1    fs_2.1.0          htmlwidgets_1.6.4\n[21] pkgconfig_2.0.3   digest_0.6.39     R6_2.6.1          tidyselect_1.2.1 \n[25] pillar_1.11.1     magrittr_2.0.5    tools_4.5.1       withr_3.0.2      \n[29] xml2_1.5.2",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/01_csp.html#repositories",
+    "href": "mock-study/01_csp.html#repositories",
+    "title": "2  Clinical Study Protocol",
+    "section": "14.3 Repositories",
+    "text": "14.3 Repositories\n\n\nShow the code\ngetOption(\"repos\")\n\n\n                      CRAN \n\"https://cran.rstudio.com\"",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Clinical Study Protocol</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/03_primary_endpoint_analysis.html",
+    "href": "mock-study/03_primary_endpoint_analysis.html",
+    "title": "3  Primary Endpoint Analysis",
+    "section": "",
+    "text": "3.1 Background\nThis document implements a primary endpoint analysis following the general design of a target trial emulation comparing new users of Drug A versus Drug B in a chronic disease setting. It uses entirely synthetic data and generic drug labels.\nThe primary outcome is a composite of hospitalization for heart failure (HF) or all-cause mortality, assessed over up to 52 weeks of follow-up. Because treatment is not randomized, initiators of the two drugs differ at baseline (confounding by indication). We address this with propensity-score overlap (ATO) weighting, then estimate the treatment effect with a weighted Cox proportional-hazards model.\nShow the code\n# Generate the simulated cohort in memory by sourcing the data-generation\n# function (nothing is read from / written to disk). Resolve the script path\n# whether rendered from the project root or from inside mock-study/.\ngen_script &lt;- c(\"02_data_generation.R\", file.path(\"mock-study\", \"02_data_generation.R\"))\nsource(gen_script[file.exists(gen_script)][1])\ncohort &lt;- generate_cohort()\n\n# Confounders to adjust for (baseline covariates).\ncovariates &lt;- c(\n  \"age\", \"female\", \"race\", \"region\",\n  \"bmi\", \"prior_hf_hosp\", \"diuretic_use\",\n  \"nephropathy\", \"neuropathy\", \"retinopathy\", \"foot_ulcer\", \"insulin_use\",\n  \"pad\", \"afib\", \"cardiomyopathy\", \"ckd\",\n  \"copd\", \"depression\", \"dementia\",\n  \"metformin\", \"sulfonylurea\", \"sglt2i\", \"statin\", \"anticoagulant\",\n  \"n_hospitalizations\", \"n_ed_visits\", \"n_distinct_meds\", \"comorbidity_index\"\n)\n\n# Human-readable variable labels (used by gtsummary tables).\nvar_labels &lt;- list(\n  age = \"Age, years\", female = \"Female sex\", race = \"Race\", region = \"Region\",\n  bmi = \"Body mass index, kg/m²\", prior_hf_hosp = \"Prior HF hospitalization\",\n  diuretic_use = \"Diuretic use\", nephropathy = \"Diabetic nephropathy\",\n  neuropathy = \"Diabetic neuropathy\", retinopathy = \"Diabetic retinopathy\",\n  foot_ulcer = \"Foot ulcer\", insulin_use = \"Insulin use\",\n  pad = \"Peripheral arterial disease\", afib = \"Atrial fibrillation\",\n  cardiomyopathy = \"Cardiomyopathy\", ckd = \"Chronic kidney disease\",\n  copd = \"COPD\", depression = \"Depression\", dementia = \"Dementia\",\n  metformin = \"Metformin\", sulfonylurea = \"Sulfonylurea\", sglt2i = \"SGLT2 inhibitor\",\n  statin = \"Statin\", anticoagulant = \"Anticoagulant\",\n  n_hospitalizations = \"No. hospitalizations (prior yr)\",\n  n_ed_visits = \"No. ED visits (prior yr)\",\n  n_distinct_meds = \"No. distinct medications\",\n  comorbidity_index = \"Combined comorbidity index\"\n)\nThe analytic cohort comprises 28,100 patients (11,864 Drug A, 16,236 Drug B).",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primary Endpoint Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/03_primary_endpoint_analysis.html#background",
+    "href": "mock-study/03_primary_endpoint_analysis.html#background",
+    "title": "3  Primary Endpoint Analysis",
+    "section": "",
+    "text": "Important: This is a mock study created exclusively to illustrate the capabilities of Claude Code for agentic code review and validation. Drug names have been replaced with placeholders (Drug A, Drug B). All data are fully simulated. No real-world clinical conclusions should be drawn from this analysis.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primary Endpoint Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/03_primary_endpoint_analysis.html#step-1-baseline-characteristics-before-weighting",
+    "href": "mock-study/03_primary_endpoint_analysis.html#step-1-baseline-characteristics-before-weighting",
+    "title": "3  Primary Endpoint Analysis",
+    "section": "3.2 Step 1 — Baseline characteristics (before weighting)",
+    "text": "3.2 Step 1 — Baseline characteristics (before weighting)\nSeveral covariates show meaningful imbalance (|SMD| &gt; 0.1), confirming confounding by indication: Drug A initiators are younger, have higher BMI, and carry a lower cardiovascular/comorbidity burden.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primary Endpoint Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/03_primary_endpoint_analysis.html#step-2-propensity-score-estimation-and-overlap-ato-weighting",
+    "href": "mock-study/03_primary_endpoint_analysis.html#step-2-propensity-score-estimation-and-overlap-ato-weighting",
+    "title": "3  Primary Endpoint Analysis",
+    "section": "3.3 Step 2 — Propensity score estimation and overlap (ATO) weighting",
+    "text": "3.3 Step 2 — Propensity score estimation and overlap (ATO) weighting\nWe estimate the propensity score (probability of receiving Drug A) with a logistic regression on all baseline covariates, then derive overlap (ATO) weights. Overlap weights emphasize patients with propensity scores in the region of clinical equipoise and yield exact mean balance on every covariate included in the model.\n\n\nShow the code\nps_formula &lt;- reformulate(covariates, response = \"treatment\")\n\nW &lt;- weightit(\n  ps_formula,\n  data      = cohort,\n  method    = \"glm\",     # logistic-regression propensity score\n  estimand  = \"ATO\"      # average treatment effect in the overlap population\n)\n\ncohort$ato_weight &lt;- W$weights\nW\n\n\nA weightit object\n - method: \"glm\" (propensity score weighting with GLM)\n - number of obs.: 28100\n - sampling weights: none\n - treatment: 2-category\n - estimand: ATO\n - covariates: age, female, race, region, bmi, prior_hf_hosp, diuretic_use, nephropathy, neuropathy, retinopathy, foot_ulcer, insulin_use, pad, afib, cardiomyopathy, ckd, copd, depression, dementia, metformin, sulfonylurea, sglt2i, statin, anticoagulant, n_hospitalizations, n_ed_visits, n_distinct_meds, comorbidity_index\n\n\n\n3.3.1 Covariate balance before vs. after weighting\n\n\nShow the code\nlove.plot(\n  W,\n  stats        = \"mean.diffs\",\n  abs          = TRUE,\n  thresholds   = c(m = 0.1),\n  var.order    = \"unadjusted\",\n  drop.distance = TRUE,\n  sample.names = c(\"Unweighted\", \"ATO weighted\"),\n  title        = \"Covariate balance: standardized mean differences\"\n)\n\n\nWarning in love.plot(x = cobalt::bal.tab(x = structure(list(weights = c(`1` = 0.482898325181082, : Standardized mean differences and raw mean differences are present in the same\nplot. Use the `stars` argument to distinguish between them and appropriately\nlabel the x-axis. See `love.plot()` for details.\n\n\n\n\n\n\n\n\n\nAfter overlap weighting, all standardized mean differences are driven to ~0, indicating excellent balance.\n\n\n3.3.2 Propensity score overlap\n\n\nShow the code\nbal.plot(\n  W,\n  var.name = \"prop.score\",\n  which    = \"both\",\n  type     = \"density\",\n  sample.names = c(\"Unweighted\", \"ATO weighted\")\n) +\n  labs(title = \"Propensity score distribution by treatment group\",\n       x = \"Propensity score (P[Drug A])\")\n\n\n\n\n\n\n\n\n\n\n\n3.3.3 Baseline characteristics — before and after ATO weighting\n\n\nShow the code\ntbl_merge(\n  tbls        = list(tbl_unwt, tbl_wt),\n  tab_spanner = c(\"**Unweighted**\", \"**ATO weighted**\")\n) |&gt;\n  modify_caption(\n    \"**Table 1. Baseline characteristics before and after ATO overlap weighting**\"\n  )\n\n\n\n\n\n\nTable 1. Baseline characteristics before and after ATO overlap weighting\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\n\nUnweighted\n\n\nATO weighted\n\n\n\nDrug B\nN = 16,2361\nDrug A\nN = 11,8641\nSMD\np-value\nDrug B\nN = 6,4791\nDrug A\nN = 6,4791\nSMD\np-value\n\n\n\n\nAge, years\n66.2 (9.9)\n63.5 (9.8)\n\n\n\n\n64.6 (9.9)\n64.6 (9.8)\n\n\n\n\n\n\nFemale sex\n7,934 (49%)\n5,726 (48%)\n\n\n\n\n3,146 (49%)\n3,146 (49%)\n\n\n\n\n\n\nRace\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    Black\n2,920 (18%)\n2,038 (17%)\n\n\n\n\n1,138 (18%)\n1,138 (18%)\n\n\n\n\n\n\n    Other\n1,897 (12%)\n1,476 (12%)\n\n\n\n\n788 (12%)\n788 (12%)\n\n\n\n\n\n\n    White\n11,419 (70%)\n8,350 (70%)\n\n\n\n\n4,553 (70%)\n4,553 (70%)\n\n\n\n\n\n\nRegion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    Midwest\n3,619 (22%)\n2,819 (24%)\n\n\n\n\n1,496 (23%)\n1,496 (23%)\n\n\n\n\n\n\n    Northeast\n3,082 (19%)\n2,451 (21%)\n\n\n\n\n1,297 (20%)\n1,297 (20%)\n\n\n\n\n\n\n    South\n6,405 (39%)\n4,225 (36%)\n\n\n\n\n2,417 (37%)\n2,417 (37%)\n\n\n\n\n\n\n    West\n3,130 (19%)\n2,369 (20%)\n\n\n\n\n1,270 (20%)\n1,270 (20%)\n\n\n\n\n\n\nBody mass index, kg/m²\n32.6 (5.0)\n33.6 (5.0)\n\n\n\n\n33.2 (5.0)\n33.2 (5.0)\n\n\n\n\n\n\nPrior HF hospitalization\n1,145 (7.1%)\n559 (4.7%)\n\n\n\n\n358 (5.5%)\n358 (5.5%)\n\n\n\n\n\n\nDiuretic use\n4,613 (28%)\n3,228 (27%)\n\n\n\n\n1,797 (28%)\n1,797 (28%)\n\n\n\n\n\n\nDiabetic nephropathy\n2,533 (16%)\n1,667 (14%)\n\n\n\n\n947 (15%)\n947 (15%)\n\n\n\n\n\n\nDiabetic neuropathy\n3,544 (22%)\n2,638 (22%)\n\n\n\n\n1,431 (22%)\n1,431 (22%)\n\n\n\n\n\n\nDiabetic retinopathy\n2,006 (12%)\n1,461 (12%)\n\n\n\n\n798 (12%)\n798 (12%)\n\n\n\n\n\n\nFoot ulcer\n773 (4.8%)\n603 (5.1%)\n\n\n\n\n317 (4.9%)\n317 (4.9%)\n\n\n\n\n\n\nInsulin use\n5,134 (32%)\n3,334 (28%)\n\n\n\n\n1,917 (30%)\n1,917 (30%)\n\n\n\n\n\n\nPeripheral arterial disease\n1,631 (10%)\n1,194 (10%)\n\n\n\n\n650 (10%)\n650 (10%)\n\n\n\n\n\n\nAtrial fibrillation\n2,127 (13%)\n1,259 (11%)\n\n\n\n\n749 (12%)\n749 (12%)\n\n\n\n\n\n\nCardiomyopathy\n1,191 (7.3%)\n759 (6.4%)\n\n\n\n\n438 (6.8%)\n438 (6.8%)\n\n\n\n\n\n\nChronic kidney disease\n3,603 (22%)\n1,993 (17%)\n\n\n\n\n1,224 (19%)\n1,224 (19%)\n\n\n\n\n\n\nCOPD\n2,117 (13%)\n1,512 (13%)\n\n\n\n\n836 (13%)\n836 (13%)\n\n\n\n\n\n\nDepression\n2,868 (18%)\n2,140 (18%)\n\n\n\n\n1,156 (18%)\n1,156 (18%)\n\n\n\n\n\n\nDementia\n653 (4.0%)\n482 (4.1%)\n\n\n\n\n264 (4.1%)\n264 (4.1%)\n\n\n\n\n\n\nMetformin\n11,689 (72%)\n8,521 (72%)\n\n\n\n\n4,653 (72%)\n4,653 (72%)\n\n\n\n\n\n\nSulfonylurea\n5,698 (35%)\n4,254 (36%)\n\n\n\n\n2,313 (36%)\n2,313 (36%)\n\n\n\n\n\n\nSGLT2 inhibitor\n4,672 (29%)\n3,749 (32%)\n\n\n\n\n1,963 (30%)\n1,963 (30%)\n\n\n\n\n\n\nStatin\n10,522 (65%)\n7,725 (65%)\n\n\n\n\n4,208 (65%)\n4,208 (65%)\n\n\n\n\n\n\nAnticoagulant\n2,299 (14%)\n1,733 (15%)\n\n\n\n\n932 (14%)\n932 (14%)\n\n\n\n\n\n\nNo. hospitalizations (prior yr)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    0\n10,933 (67%)\n7,846 (66%)\n\n\n\n\n4,331 (67%)\n4,306 (66%)\n\n\n\n\n\n\n    1\n4,274 (26%)\n3,268 (28%)\n\n\n\n\n1,723 (27%)\n1,768 (27%)\n\n\n\n\n\n\n    2\n893 (5.5%)\n650 (5.5%)\n\n\n\n\n368 (5.7%)\n352 (5.4%)\n\n\n\n\n\n\n    3\n125 (0.8%)\n93 (0.8%)\n\n\n\n\n53 (0.8%)\n49 (0.8%)\n\n\n\n\n\n\n    4\n10 (&lt;0.1%)\n5 (&lt;0.1%)\n\n\n\n\n4 (&lt;0.1%)\n3 (&lt;0.1%)\n\n\n\n\n\n\n    5\n1 (&lt;0.1%)\n2 (&lt;0.1%)\n\n\n\n\n0 (&lt;0.1%)\n1 (&lt;0.1%)\n\n\n\n\n\n\nNo. ED visits (prior yr)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    0\n9,026 (56%)\n6,374 (54%)\n\n\n\n\n3,562 (55%)\n3,525 (54%)\n\n\n\n\n\n\n    1\n5,211 (32%)\n3,938 (33%)\n\n\n\n\n2,084 (32%)\n2,135 (33%)\n\n\n\n\n\n\n    2\n1,605 (9.9%)\n1,257 (11%)\n\n\n\n\n661 (10%)\n667 (10%)\n\n\n\n\n\n\n    3\n338 (2.1%)\n255 (2.1%)\n\n\n\n\n147 (2.3%)\n133 (2.1%)\n\n\n\n\n\n\n    4\n50 (0.3%)\n39 (0.3%)\n\n\n\n\n22 (0.3%)\n20 (0.3%)\n\n\n\n\n\n\n    5\n6 (&lt;0.1%)\n0 (0%)\n\n\n\n\n2 (&lt;0.1%)\n0 (0%)\n\n\n\n\n\n\n    6\n0 (0%)\n1 (&lt;0.1%)\n\n\n\n\n0 (0%)\n0 (&lt;0.1%)\n\n\n\n\n\n\nNo. distinct medications\n8.0 (2.8)\n8.0 (2.8)\n\n\n\n\n8.0 (2.8)\n8.0 (2.8)\n\n\n\n\n\n\nCombined comorbidity index\n2.2 (1.4)\n1.9 (1.3)\n\n\n\n\n2.0 (1.4)\n2.0 (1.4)\n\n\n\n\n\n\n\n1 Mean (SD); n (%)\n\n\nAbbreviation: CI = Confidence Interval",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primary Endpoint Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/03_primary_endpoint_analysis.html#step-3-primary-endpoint-analysis-weighted-cox-model",
+    "href": "mock-study/03_primary_endpoint_analysis.html#step-3-primary-endpoint-analysis-weighted-cox-model",
+    "title": "3  Primary Endpoint Analysis",
+    "section": "3.4 Step 3 — Primary endpoint analysis (weighted Cox model)",
+    "text": "3.4 Step 3 — Primary endpoint analysis (weighted Cox model)\nThe treatment effect on the composite endpoint is estimated with a Cox proportional-hazards model incorporating the overlap weights. Robust (sandwich) standard errors account for the weighting.\n\n\nShow the code\ncox_wt &lt;- coxph(\n  Surv(time, status) ~ treatment_label,\n  data    = cohort,\n  weights = cohort$ato_weight,\n  robust  = TRUE\n)\n\ntbl_regression(cox_wt, exponentiate = TRUE) |&gt;\n  modify_header(estimate ~ \"**HR**\") |&gt;\n  modify_caption(\n    \"**Table 2. Primary composite endpoint — ATO-weighted hazard ratio**\"\n  )\n\n\n\n\n\n\nTable 2. Primary composite endpoint — ATO-weighted hazard ratio\n\n\n\n\n\n\n\n\nCharacteristic\nHR\n95% CI\np-value\n\n\n\n\ntreatment_label\n\n\n\n\n\n\n\n\n    Drug B\n—\n—\n\n\n\n\n    Drug A\n0.86\n0.73, 1.02\n0.091\n\n\n\nAbbreviations: CI = Confidence Interval, HR = Hazard Ratio\n\n\n\n\n\n\n\n\n\n\nShow the code\nhr      &lt;- exp(coef(cox_wt))[[\"treatment_labelDrug A\"]]\nci      &lt;- exp(confint(cox_wt))[\"treatment_labelDrug A\", ]\nhr_text &lt;- sprintf(\"%.2f (95%% CI, %.2f-%.2f)\", hr, ci[1], ci[2])\n\n\nPrimary result: Drug A vs. Drug B HR = 0.86 (95% CI, 0.73-1.02) for the composite of HF hospitalization or all-cause mortality.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primary Endpoint Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "mock-study/03_primary_endpoint_analysis.html#step-4-one-year-cumulative-incidence",
+    "href": "mock-study/03_primary_endpoint_analysis.html#step-4-one-year-cumulative-incidence",
+    "title": "3  Primary Endpoint Analysis",
+    "section": "3.5 Step 4 — One-year cumulative incidence",
+    "text": "3.5 Step 4 — One-year cumulative incidence\n\n\nShow the code\nfit_wt &lt;- survfit(\n  Surv(time, status) ~ treatment_label,\n  data    = cohort,\n  weights = cohort$ato_weight\n)\n\nrisk_1yr &lt;- summary(fit_wt, times = 365)\nrisk_tbl &lt;- data.frame(\n  Group         = sub(\"treatment_label=\", \"\", risk_1yr$strata),\n  `1-year risk` = sprintf(\"%.1f%% (95%% CI, %.1f%%-%.1f%%)\",\n                          100 * (1 - risk_1yr$surv),\n                          100 * (1 - risk_1yr$lower),\n                          100 * (1 - risk_1yr$upper)),\n  check.names = FALSE\n)\nkable(risk_tbl, caption = \"Table 3. ATO-weighted 1-year risk by arm\")\n\n\n\nTable 3. ATO-weighted 1-year risk by arm\n\n\nGroup\n1-year risk\n\n\n\n\nDrug B\n3.4% (95% CI, 3.7%-3.1%)\n\n\nDrug A\n3.0% (95% CI, 3.4%-2.6%)\n\n\n\n\n\n\n\nShow the code\nsurvfit2(\n  Surv(time, status) ~ treatment_label,\n  data    = cohort,\n  weights = cohort$ato_weight\n) |&gt;\n  ggsurvfit(type = \"risk\", linewidth = 1) +\n  add_confidence_interval() +\n  add_risktable(risktable_stats = \"n.risk\") +\n  coord_cartesian(xlim = c(0, 365)) +\n  scale_x_continuous(breaks = seq(0, 365, 90)) +\n  scale_y_continuous(labels = percent) +\n  labs(\n    title = \"Cumulative incidence of HF hospitalization or all-cause mortality\",\n    x = \"Days since treatment initiation\",\n    y = \"Cumulative incidence\"\n  )\n\n\n\n\n\n\n\n\n\n\n3.5.1 Interpretation\nAfter propensity-score overlap weighting, the risk of the composite endpoint is not meaningfully different between Drug A and Drug B initiators, with a hazard ratio close to the published estimate of 0.86 and a confidence interval that crosses 1.0. The crude (unweighted) analysis would have overstated a Drug A benefit because of confounding by indication — illustrating why balancing the treatment groups is essential.",
+    "crumbs": [
+      "Mock study",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primary Endpoint Analysis</span>"
+    ]
   }
 ]
