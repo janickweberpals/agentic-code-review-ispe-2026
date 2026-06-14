@@ -116,12 +116,23 @@ library(gt)
 :::::
 :::::::::::::::
 
-## Code Review - The Why?
+## Code Review - The Why?[@vable2021code]
 
--   Pharmacoepidemiology is a **quantitative** discipline
--   Combines knowledge about data, study design, and statistical methods
--   Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code is an essential tool and core competency
--   Limited formal formal training in programming, version control, and software development best practices
+::::::: columns
+::: {.column width="50%" style="font-size: 0.65em;"}
+- **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
+- **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
+- **Limited formal formal training** in programming, version control, and software development best practices
+- **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
+- **Operational Transparency**: Uses style guides and detailed documentation to [ensure analytic decisions are clear, consistent, and easily traceable by others]{style="color: #B22222;"}
+- **Cultural Shift**: Normalizes error-finding as a group problem-solving exercise, moving the field toward a [collective "culture of reproducibility"]{style="color: #B22222;"} rather than individual perfection
+- **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #B22222;"}, which reduces the volume of new, unverified programming for each study.
+:::
+
+::: {.column width="50%"}
+![Systematic code review serves as a critical safeguard against human error in data analysis, enhancing research quality and transparency while fostering a collective culture of reproducibility within the scientific community.[@vable2021code]](images/Vable-et-al.-2021.png){#fig-aje-2021 fig-cap-location="bottom" style="font-size: 0.6em;"}
+:::
+:::::::
 
 ## Consequences of Poor Code Quality (i)
 
@@ -172,6 +183,10 @@ library(gt)
 
 ![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
+## Code Review - Demo [placeholder]
+
+PLACEHOLDER
+
 ## Coding Agents[@raschka2026components; @mindstudio2026harness]
 
 ![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions](images/ai_coding_agent_architecture.png){#fig-pr-workflow width="95%"}
@@ -219,19 +234,85 @@ The richer the context, the more targeted and accurate the agentic code review
 :::
 :::::::
 
-## Anatomy of `\code-review` agent
+## Anatomy of `/code-reviewer` agent {.scrollable}
 
+::: {style="font-size: 0.62em; white-space: pre-wrap;"}
+```markdown
+---
+name: code-reviewer
+description: Reviews code changes for bugs, security issues, performance problems, and style.
+tools: Read, Grep, Glob, Bash
+model: sonnet
+---
 
+You are a senior code reviewer with deep expertise in code quality, security, and software design applied to pharmacoepidemiological studies.
 
-## Claude Code - multiagentic code review (placeholder)
+When invoked:
+
+## Determine Scope
+- [ ] If the user specified a file, commit, branch, or PR, focus there.
+- [ ] If no scope is given, run `git diff HEAD` to review uncommitted/staged changes. If that's empty, fall back to `git diff HEAD~1` (the most recent commit).
+
+## Understand Context
+- [ ] Read the changed files in full (not just the diff) to understand the surrounding context naming conventions, existing patterns, related tests.
+
+## Review Checklist
+
+Review for:
+
+### Correctness
+- [ ] Any logic errors
+- [ ] Edge cases
+- [ ] Null handling
+
+### Security Review
+- [ ] No hardcoded secrets, paths, access tokens, or credentials
+- [ ] Injection
+- [ ] Auth bypass
+- [ ] Data exposure
+
+### Maintainability
+- [ ] Naming conventions
+- [ ] Complexity (functions doing too much)
+- [ ] Duplication (including .qmd chunk duplicates)
+- [ ] Consistency with existing patterns
+- [ ] README.md updated
+
+### Validation
+- [ ] if @sap.qmd or @csp.qmd is available or the user specified a protocol file, cross-check for consistency with clinical study protocol 
+- [ ] if testthat/ is available, run unit tests via testthat
+
+### Code Quality Review
+- [ ] Conventional commit messages
+- [ ] PR description explains what and why
+- [ ] Tests cover new functionality
+- [ ] Documentation updated
+- [ ] Dependencies are up to date and secure
+
+Every finding must include a brief explanation and a concrete fix. Do not execute code.
+
+## Output format:
+- [ ] Group findings by severity: **Critical**, **Warning**, **Suggestion**
+- [ ] For each finding: file path, line number(s), a short explanation, and a concrete fix or example
+- [ ] End with a one-line verdict, e.g. "Ready to merge" or "Needs changes before merge"
+
+Be specific, cite exact lines, and suggest fixes rather than just naming problems. You are strictly read-only — never edit, write, or modify files. Git and grep commands are permitted.
+```
+:::
+
+## [Claude Code - Demo (placeholder)]{style="font-size: 0.8em;"}
 
 {{< video "https://www.youtube-nocookie.com/embed/RKsADl0ZC3Y?si=y8GEOERtR3P9-eMm" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
 Video courtesy of Anthropic
 
-## Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]
+## [Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]]{style="font-size: 0.8em;"}
 
 {{< video "https://www.youtube-nocookie.com/embed/xvhYmGz_x74?si=fS86anQWzkdXIXUa" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
+
+## Famous final words
+
+![Linus Torvalds, developer of `git` and `Linux`](images/talk-is-cheap.jpg){#fig-talk width="100%"}
 
 ## Materials on Version Control and Code Sharing
 
@@ -248,9 +329,5 @@ Video courtesy of Anthropic
 
 -   [Pharmacoepidemiology and Drug Safety Special Issue on Pharmacoepidemiology Research Reproducibility](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1099-1557.research-reproducibility)
 :::
-
-## Famous final words
-
-![Linus Torvalds, developer of `git` and `Linux`](images/talk-is-cheap.jpg){#fig-talk width="100%"}
 
 ## References

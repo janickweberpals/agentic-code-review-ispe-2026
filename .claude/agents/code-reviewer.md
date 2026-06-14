@@ -39,7 +39,7 @@ Review for:
 - [ ] README.md updated
 
 ### Validation
-- [ ] if @sap.qmd or @csp.qmd is available or the user specified a protocol file, cross-check for consistency with clinical study protocol 
+- [ ] if @sap.qmd, @csp.qmd, @01_csp.qmd is available or the user specified a protocol file, cross-check for consistency with clinical study protocol 
 - [ ] if testthat/ is available, run unit tests via testthat
 
 ### Code Quality Review
