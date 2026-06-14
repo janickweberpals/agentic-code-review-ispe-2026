@@ -6,6 +6,7 @@
 .RData
 .RDataTmp
 *.DS_Store
+**/.DS_Store
 .DS_Store
 
 # User-specific files
@@ -58,7 +59,11 @@ rsconnect/
 *.mp4
 *.mov
 
+# claude command
+**/trial-emulation.md
+
 # other file types
+*.html
 *.pptx
 *.docx
 *.xlsx
@@ -74,3 +79,4 @@ rsconnect/
 *.tar.xz
 *.rds
 *.rdata
+*.ckpt

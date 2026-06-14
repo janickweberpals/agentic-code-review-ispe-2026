@@ -13,7 +13,9 @@ author:
       - name: 
         address: 
         city: 
-output: html_document
+format:
+  html:
+    embed-resources: true
 code-fold: false
 number-sections: false
 ---
