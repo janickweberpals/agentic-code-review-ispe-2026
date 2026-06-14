@@ -1,0 +1,628 @@
+---
+title: "Clinical Study Protocol"
+subtitle: "Adapted to illustrate agentic code review with Claude Code"
+author: "Example Author"
+date: today
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(dplyr)
+library(gt)
+
+# Reusable gt style helper (mirrors HARPER template)
+gt_style <- function(x) {
+  gt::tab_options(x, data_row.padding = gt::px(3))
+}
+```
+
+> **Important:** This is a **mock protocol** adapted from a published clinical study
+> protocol solely to illustrate agentic code review and validation with
+> [Claude Code](https://claude.ai/code). Drug names and identifying information
+> have been replaced with placeholders (**Drug A**, **Drug B**). All data are
+> fully simulated. No real-world clinical conclusions should be drawn.
+
+This protocol is based on the *HARmonized Protocol Template to Enhance
+Reproducibility (HARPER) of Hypothesis Evaluating Real-World Evidence Studies on
+Treatment Effects: A Good Practices Report of a Joint ISPE/ISPOR Task Force*
+(**HARPER**) protocol by Wang SV et al.
+
+{{< pagebreak >}}
+
+# Title page {.unnumbered}
+
+## Title {.unnumbered .unlisted}
+
+\[Mock Study\] Comparative Effectiveness of Drug A vs. Drug B — Adapted to
+Illustrate Agentic Code Review
+
+## Research question and objectives {.unnumbered .unlisted}
+
+To evaluate the comparative effect of **Drug A vs. Drug B** on the composite
+primary endpoint of all-cause mortality or hospitalization for heart failure in a
+simulated cohort.
+
+## Protocol version {.unnumbered .unlisted}
+
+Version 1
+
+## Contributors {.unnumbered .unlisted}
+
+**Primary investigator contact information:** \[REDACTED\]
+
+**Contributor names:** \[REDACTED\]
+
+## Study registration {.unnumbered .unlisted}
+
+**Site:** N/A
+
+**Identifier:** N/A
+
+## Sponsor {.unnumbered .unlisted}
+
+**Organization:** N/A
+
+**Contact:** N/A
+
+## Conflict of interest {.unnumbered .unlisted}
+
+\[REDACTED\]
+
+{{< pagebreak >}}
+
+# Abstract
+
+This is a non-randomized, non-interventional **mock study** designed to
+illustrate a complete target trial emulation workflow using fully simulated data.
+The study design is adapted from a published new-user active-comparator cohort
+study comparing Drug A versus Drug B on the composite end point of all-cause
+mortality or hospitalization for heart failure.
+
+Drug A (treatment = 1) and Drug B (treatment = 0) are used as generic
+placeholders. The simulated cohort (n = 28,100) deliberately introduces
+**confounding by indication** so that propensity-score overlap weighting has a
+meaningful role to play. The primary analysis uses the **average treatment effect
+in the overlap (ATO) population**, estimated via a weighted Cox
+proportional-hazards model.
+
+# Amendments and updates
+
+No amendments have been made to this mock protocol.
+
+```{r}
+#| label: tbl-amendments
+#| tbl-cap: "Amendments and updates"
+
+dplyr::tibble(
+  `Version date`    = character(0),
+  `Version number`  = character(0),
+  `Section`         = character(0),
+  `Amendment`       = character(0),
+  `Reason`          = character(0)
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+# Milestones
+
+```{r}
+#| label: tbl-milestones
+#| tbl-cap: "Milestones"
+
+dplyr::tibble(
+  Milestone = c(
+    "Protocol finalisation",
+    "Data simulation and cohort generation",
+    "Primary endpoint analysis",
+    "Report/HTML rendered"
+  ),
+  Date = c(
+    "2025-02-14",
+    "2026-06-14",
+    "2026-06-14",
+    "2026-06-14"
+  )
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+# Rationale and background
+
+**What is known about the condition:** Heart failure with preserved ejection
+fraction (HFpEF) carries high morbidity and mortality; patients with
+concomitant type 2 diabetes mellitus (T2DM) face an especially elevated risk
+of hospitalization and death.
+
+**What is known about the exposure of interest:** Drug A is a newer dual-receptor
+agonist; Drug B is an established single-receptor agonist. Both are approved for
+glucose control in T2DM. Clinical guidelines consider them interchangeable for
+the relevant indication during the study period, making an active-comparator
+design appropriate.
+
+**Gaps in knowledge:** Whether Drug A confers a differential benefit over Drug B
+on cardiovascular outcomes — specifically HF hospitalization or all-cause
+mortality — has not been established in randomized trials powered for this
+composite endpoint.
+
+**What is the expected contribution of this study?** This mock emulation
+illustrates how a new-user active-comparator design with propensity-score overlap
+weighting can address confounding by indication in a real-world evidence setting.
+It is intended as a teaching example for agentic code review, not to generate
+clinical evidence.
+
+# Research question and objectives
+
+```{r}
+#| label: tbl-objectives
+#| tbl-cap: "Research questions and objectives"
+#| tbl-subcap:
+#|   - "A. Primary research question and objective"
+#|   - "B. Secondary research question and objective"
+#| layout-ncol: 1
+
+# A. Primary
+dplyr::tibble(
+  Element = c(
+    "Objective",
+    "Hypothesis",
+    "Population",
+    "Exposure",
+    "Comparator",
+    "Outcome",
+    "Time",
+    "Setting",
+    "Main measure of effect"
+  ),
+  Definition = c(
+    "To evaluate the comparative effect of Drug A vs. Drug B on all-cause mortality or heart failure hospitalization.",
+    "Drug A will not meaningfully differ from Drug B in preventing the primary composite endpoint.",
+    "Simulated new users of Drug A or Drug B (n = 28,100); age 30–90 years; T2DM setting.",
+    "Drug A (treatment = 1).",
+    "Drug B (treatment = 0).",
+    "Composite: all-cause mortality OR hospitalization for heart failure (whichever occurs first).",
+    "From 1 day after cohort entry until: composite event, informative censoring, or day 365.",
+    "Inpatient (HF hospitalization) and all-cause mortality.",
+    "Hazard ratio (HR) with 95% confidence interval."
+  )
+) |>
+  gt::gt() |>
+  gt_style()
+
+# B. Secondary (not implemented in mock study)
+dplyr::tibble(
+  Element = c("Note"),
+  Definition = c(
+    "Secondary endpoints are not implemented in this mock study. See mock-study/03_primary_endpoint_analysis.qmd."
+  )
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+# Research methods
+
+## Study design
+
+**Research design:** New-user active-comparator cohort study.
+
+**Rationale for study design choice:** The new-user active-comparator design
+addresses confounding by indication through judicious selection of a comparator
+group and subsequent statistical balancing of measured confounders via a
+propensity score. Restricting to new users avoids prevalent-user bias (depletion
+of susceptibles). The overlap (ATO) estimand is chosen because both treatment
+groups are represented throughout the propensity-score distribution, making
+equipoise-based comparison most meaningful.
+
+## Study design diagram
+
+The study window spans from a 365-day washout period before index date (time 0)
+through up to 365 days of follow-up. Baseline covariates are assessed in the
+window \[–365, 0\]; treatment is assigned at time 0 (first dispensing); the
+primary composite event or censoring occurs during \[1, 365\].
+
+## Setting
+
+### Context and rationale for definition of time 0
+
+Time 0 is defined as the date of first dispensing of Drug A or Drug B for each
+patient. The new-user requirement is operationalized by a 12-month washout window
+with no prior dispensing of either drug.
+
+```{r}
+#| label: tbl-entry
+#| tbl-cap: "Operational Definition of Time 0 (index date) and other primary time anchors"
+
+dplyr::tibble(
+  `Study population`     = c("Drug A initiators", "Drug B initiators"),
+  `Time anchor`          = c("First dispensing of Drug A", "First dispensing of Drug B"),
+  `Number of entries`    = c("Single entry", "Single entry"),
+  `Type of entry`        = c("Incident use", "Incident use"),
+  `Washout window (days)`= c("[-365, -1]", "[-365, -1]"),
+  `Variable in data`     = c("`treatment = 1`", "`treatment = 0`")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+### Context and rationale for study inclusion criteria
+
+Patients are required to be new users (no prior dispensing of Drug A or Drug B
+within 365 days before index date), aged 30–90 years, and to have a documented
+chronic disease (T2DM setting). These criteria are simulated in
+`generate_cohort()` via the age clipping and treatment-assignment mechanism.
+
+```{r}
+#| label: tbl-inclusion
+#| tbl-cap: "Operational Definitions of Inclusion Criteria"
+
+dplyr::tibble(
+  Criterion          = c("New user", "Age"),
+  Details            = c(
+    "No dispensing of Drug A or Drug B in the 365-day washout window",
+    "Age 30–90 years at cohort entry (simulated via `rnorm(n, 65, 10)` clipped to [30, 90])"
+  ),
+  `Order of application` = c("Before index date", "At index date"),
+  `Assessment window`    = c("[-365, -1]", "[0, 0]"),
+  `Applied to`           = c("Both arms", "Both arms")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+### Context and rationale for study exclusion criteria
+
+For this mock study, no explicit exclusion criteria are implemented beyond the
+new-user and age inclusion criteria above. In the source protocol, patients were
+excluded for prior use of the comparator drug, end-stage organ disease, and
+certain contraindications.
+
+```{r}
+#| label: tbl-exclusion
+#| tbl-cap: "Operational Definitions of Exclusion Criteria"
+
+dplyr::tibble(
+  Criterion = c("(None implemented in mock)"),
+  Details   = c("The mock study omits disease-specific exclusion criteria present in the source protocol."),
+  `Assessment window` = c("N/A"),
+  `Applied to`        = c("N/A")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+## Variables
+
+### Context and rationale for exposure(s) of interest
+
+Treatment group is assigned at time 0 via a logistic-regression-based
+propensity mechanism that embeds confounding by indication: Drug A (the newer
+agent) is preferentially initiated in younger patients with higher BMI and lower
+comorbidity burden. This mimics real-world prescribing behaviour and makes
+PS-based confounding adjustment necessary.
+
+**Algorithm to define duration of exposure effect:** A 45-day grace period is
+applied. Informative censoring is modelled as exponential dropout with mean 400
+days, representing disenrollment or treatment discontinuation.
+
+```{r}
+#| label: tbl-exposure
+#| tbl-cap: "Operational Definitions of Exposure"
+
+dplyr::tibble(
+  `Exposure group`   = c("Drug A", "Drug B"),
+  `R variable`       = c("`treatment = 1`; `treatment_label = 'Drug A'`",
+                          "`treatment = 0`; `treatment_label = 'Drug B'`"),
+  `Type of entry`    = c("Incident (new user)", "Incident (new user)"),
+  `Washout window`   = c("[-365, -1]", "[-365, -1]"),
+  `Grace period`     = c("45 days", "45 days")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+### Context and rationale for outcome(s) of interest
+
+The primary outcome is the **composite of all-cause mortality or hospitalization
+for heart failure**, whichever occurs first. This is simulated using a Weibull
+proportional-hazards model (`simsurv::simsurv`) with a baseline scale calibrated
+to produce a 1-year cumulative incidence of approximately 3.4% in the Drug B arm,
+matching the published source study.
+
+```{r}
+#| label: tbl-outcome
+#| tbl-cap: "Operational Definitions of Outcome"
+
+dplyr::tibble(
+  `Outcome`          = c("HF hospitalization or all-cause mortality (composite)"),
+  `Primary?`         = c("Yes"),
+  `Type`             = c("Time-to-event"),
+  `R variable`       = c("`status` (1 = event, 0 = censored); `time` (follow-up days)"),
+  `Washout window`   = c("N/A"),
+  `Simulation model` = c("Weibull(lambda = 1.8e-5, gamma = 1.15); maxt = 365 days")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+### Context and rationale for follow up
+
+Follow-up begins 1 day after cohort entry (time 0) and ends at the earliest of:
+the primary composite event, informative censoring (dropout), or the
+administrative end of study at day 365. A 45-day grace period is allowed for
+treatment gaps.
+
+```{r}
+#| label: tbl-follow_up
+#| tbl-cap: "Operational Definitions of Follow up"
+
+dplyr::tibble(
+  `Rule`                           = c(
+    "Follow-up start",
+    "Primary composite event",
+    "Informative censoring (dropout)",
+    "Administrative censoring"
+  ),
+  `Definition`                     = c(
+    "Day 1 after cohort entry (time 0 + 1 day)",
+    "First occurrence of HF hospitalization or all-cause mortality",
+    "Exponential(rate = 1/400); models disenrollment or discontinuation within the 45-day grace period",
+    "Day 365 (52 weeks)"
+  ),
+  `R implementation`               = c(
+    "`time = min(event_time, cens_time, 365)`",
+    "`status = 1` if event_time ≤ cens_time AND ≤ 365",
+    "`cens_time ~ rexp(n, rate = 1/400)`",
+    "`maxt = 365` in `simsurv::simsurv()`"
+  )
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+### Context and rationale for covariates
+
+All covariates are measured at cohort entry (baseline) and are used in both the
+propensity-score logistic regression model and the Table 1 balance assessment.
+Covariates were selected to represent the confounder domains adjusted for in the
+source study: demographics, cardiometabolic burden, diabetes complications,
+cardiovascular/kidney disease, other comorbidities, concomitant medications, and
+healthcare utilization.
+
+```{r}
+#| label: tbl-covariates
+#| tbl-cap: "Operational Definitions of Covariates"
+
+dplyr::tribble(
+  ~Domain,                     ~Variable,              ~Label,                             ~Type,       ~Distribution,
+  "Demographics",              "`age`",                "Age, years",                       "Continuous","Normal(65, 10), clipped [30, 90]",
+  "Demographics",              "`female`",             "Female sex",                       "Binary",    "Bernoulli(0.48)",
+  "Demographics",              "`race`",               "Race",                             "Categorical","White 70%, Black 18%, Other 12%",
+  "Demographics",              "`region`",             "US region",                        "Categorical","NE 20%, MW 23%, S 38%, W 19%",
+  "Cardiometabolic burden",    "`bmi`",                "Body mass index, kg/m²",           "Continuous","Normal(33, 5), clipped [18, 60]",
+  "Cardiometabolic burden",    "`prior_hf_hosp`",      "Prior HF hospitalization",         "Binary",    "Bernoulli(0.06)",
+  "Cardiometabolic burden",    "`diuretic_use`",       "Diuretic use",                     "Binary",    "Bernoulli(0.28)",
+  "Diabetes complications",    "`nephropathy`",        "Diabetic nephropathy",             "Binary",    "Bernoulli(0.15)",
+  "Diabetes complications",    "`neuropathy`",         "Diabetic neuropathy",              "Binary",    "Bernoulli(0.22)",
+  "Diabetes complications",    "`retinopathy`",        "Diabetic retinopathy",             "Binary",    "Bernoulli(0.12)",
+  "Diabetes complications",    "`foot_ulcer`",         "Foot ulcer",                       "Binary",    "Bernoulli(0.05)",
+  "Diabetes complications",    "`insulin_use`",        "Insulin use",                      "Binary",    "Bernoulli(0.30)",
+  "CV / kidney disease",       "`pad`",                "Peripheral arterial disease",      "Binary",    "Bernoulli(0.10)",
+  "CV / kidney disease",       "`afib`",               "Atrial fibrillation",              "Binary",    "Bernoulli(0.12)",
+  "CV / kidney disease",       "`cardiomyopathy`",     "Cardiomyopathy",                   "Binary",    "Bernoulli(0.07)",
+  "CV / kidney disease",       "`ckd`",                "Chronic kidney disease",           "Binary",    "Bernoulli(0.20)",
+  "Other comorbidities",       "`copd`",               "COPD",                             "Binary",    "Bernoulli(0.13)",
+  "Other comorbidities",       "`depression`",         "Depression",                       "Binary",    "Bernoulli(0.18)",
+  "Other comorbidities",       "`dementia`",           "Dementia",                         "Binary",    "Bernoulli(0.04)",
+  "Concomitant medications",   "`metformin`",          "Metformin",                        "Binary",    "Bernoulli(0.72)",
+  "Concomitant medications",   "`sulfonylurea`",       "Sulfonylurea",                     "Binary",    "Bernoulli(0.35)",
+  "Concomitant medications",   "`sglt2i`",             "SGLT2 inhibitor",                  "Binary",    "Bernoulli(0.30)",
+  "Concomitant medications",   "`statin`",             "Statin",                           "Binary",    "Bernoulli(0.65)",
+  "Concomitant medications",   "`anticoagulant`",      "Anticoagulant",                    "Binary",    "Bernoulli(0.14)",
+  "Healthcare utilization",    "`n_hospitalizations`", "No. hospitalizations (prior yr)",  "Count",     "Poisson(0.4)",
+  "Healthcare utilization",    "`n_ed_visits`",        "No. ED visits (prior yr)",         "Count",     "Poisson(0.6)",
+  "Healthcare utilization",    "`n_distinct_meds`",    "No. distinct medications",         "Count",     "Poisson(8)",
+  "Healthcare utilization",    "`comorbidity_index`",  "Combined comorbidity index",       "Continuous","max(Normal(2, 1.5), 0)"
+) |>
+  gt::gt() |>
+  gt::tab_row_group(label = "Healthcare utilization",   rows = Domain == "Healthcare utilization") |>
+  gt::tab_row_group(label = "Concomitant medications",  rows = Domain == "Concomitant medications") |>
+  gt::tab_row_group(label = "Other comorbidities",      rows = Domain == "Other comorbidities") |>
+  gt::tab_row_group(label = "CV / kidney disease",      rows = Domain == "CV / kidney disease") |>
+  gt::tab_row_group(label = "Diabetes complications",   rows = Domain == "Diabetes complications") |>
+  gt::tab_row_group(label = "Cardiometabolic burden",   rows = Domain == "Cardiometabolic burden") |>
+  gt::tab_row_group(label = "Demographics",             rows = Domain == "Demographics") |>
+  gt::cols_hide(Domain) |>
+  gt_style()
+```
+
+## Data analysis
+
+### Context and rationale for analysis plan
+
+The estimand of interest is the **average treatment effect in the overlap (ATO)
+population** — patients for whom either treatment would realistically have been
+prescribed (clinical equipoise). This is achieved through propensity-score
+overlap weighting, which up-weights patients near the decision boundary and
+avoids the extrapolation problems of ATT or ATE weighting with extreme scores.
+
+```{r}
+#| label: tbl-analysis
+#| tbl-cap: "Primary, secondary, and subgroup analysis specification"
+#| tbl-subcap:
+#|   - "A. Primary analysis"
+#|   - "B. Secondary analysis"
+#| layout-ncol: 1
+
+# A. Primary
+dplyr::tibble(
+  Element = c(
+    "Hypothesis",
+    "Exposure contrast",
+    "Outcome",
+    "Analytic software",
+    "Propensity score model",
+    "Confounding adjustment",
+    "Outcome model",
+    "Standard errors",
+    "Missing data",
+    "Subgroup analyses"
+  ),
+  Specification = c(
+    "Drug A is not meaningfully different from Drug B on the composite endpoint (non-inferiority).",
+    "Drug A vs. Drug B (new users).",
+    "Composite: all-cause mortality or HF hospitalization (time-to-event).",
+    "R ≥ 4.5; packages: WeightIt, cobalt, gtsummary, survival, ggsurvfit (see Section 9).",
+    "Logistic regression: `treatment ~ age + female + race + region + bmi + prior_hf_hosp + diuretic_use + nephropathy + neuropathy + retinopathy + foot_ulcer + insulin_use + pad + afib + cardiomyopathy + ckd + copd + depression + dementia + metformin + sulfonylurea + sglt2i + statin + anticoagulant + n_hospitalizations + n_ed_visits + n_distinct_meds + comorbidity_index`; implemented via `WeightIt::weightit(method = 'glm', estimand = 'ATO')`.",
+    "Propensity-score overlap (ATO) weighting; balance assessed with SMDs and Love plot (cobalt).",
+    "Weighted Cox PH: `survival::coxph(Surv(time, status) ~ treatment_label, weights = ato_weight, robust = TRUE)`.",
+    "Robust (sandwich) standard errors to account for weighting.",
+    "No missing data (fully simulated dataset).",
+    "None implemented in mock study."
+  )
+) |>
+  gt::gt() |>
+  gt_style()
+
+# B. Secondary (not implemented)
+dplyr::tibble(
+  Element       = c("Note"),
+  Specification = c("Secondary analyses are not implemented in this mock study.")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+```{r}
+#| label: tbl-sensitivity
+#| tbl-cap: "Sensitivity analyses — rationale, strengths and limitations"
+
+dplyr::tibble(
+  Analysis   = c("(None implemented in mock)"),
+  Rationale  = c("Sensitivity analyses from the source protocol (e.g. ATT weighting, 90-day follow-up, prior event rate ratio) are not implemented in this mock study."),
+  Strengths  = c("N/A"),
+  Limitations = c("N/A")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+## Data sources
+
+### Context and rationale for data sources
+
+**Reason for selection:** Fully simulated data are used to enable reproducible
+teaching without the need for restricted real-world data access.
+
+**Strengths:** The simulation is calibrated to approximate a published source
+study in terms of cohort size, confounding structure, event rates, and effect
+size. It is generated deterministically from a fixed seed (`seed = 20260614`).
+
+**Limitations:** Simulated data cannot capture real-world complexities such as
+informative loss to follow-up correlated with covariates, measurement error,
+unmeasured confounders, or data source heterogeneity across claims databases.
+
+**Data source provenance:** All data are generated in memory by
+`generate_cohort()` in `mock-study/02_data_generation.R`. Nothing is written to
+disk.
+
+```{r}
+#| label: tbl-data
+#| tbl-cap: "Metadata about data sources and software"
+
+dplyr::tibble(
+  `Data source`          = c("Simulated cohort"),
+  `Study period`         = c("Not applicable (synthetic)"),
+  `Eligible entry period`= c("Not applicable"),
+  `Data version`         = c("Seed = 20260614; generated 2026-06-14"),
+  `Data linkage`         = c("None"),
+  `Common data model`    = c("None"),
+  `Software`             = c("R ≥ 4.5; renv for package management")
+) |>
+  gt::gt() |>
+  gt_style()
+```
+
+## Data management
+
+All data are generated in memory within the R session at analysis time.
+No patient data are stored on disk. Package versions are locked via `renv` to
+ensure reproducibility across R environments.
+
+## Quality control
+
+The simulated data are validated by inspecting the ATO-weighted results in
+`03_primary_endpoint_analysis.qmd`. Target benchmarks: 1-year risk ≈ 3.4%
+(Drug B arm), ATO-weighted HR ≈ 0.86 (95% CI includes 1.0).
+
+## Study size and feasibility
+
+The cohort size of n = 28,100 is calibrated to a published source study.
+With approximately 500–600 events, the study is
+adequately powered to estimate the HR with a 95% CI width of approximately ±0.15
+on the log scale.
+
+# Limitation of the methods
+
+1. **Simulated data:** All patient records are synthetic; covariate distributions
+   approximate but do not replicate real-world data.
+2. **Single primary endpoint only:** Secondary endpoints, subgroup analyses, and
+   sensitivity analyses from the source protocol are not implemented.
+3. **No negative control outcomes:** Negative control outcome analyses are omitted.
+4. **No data source heterogeneity:** The source study pooled three US claims
+   databases; this mock uses a single simulated cohort.
+5. **Simplified censoring:** A single exponential dropout process is used;
+   database-specific disenrollment rules are not modelled.
+
+# Protection of human subjects
+
+This mock study uses only fully synthetic data generated by a random number
+generator. No real patient data are used or referenced. No institutional review
+board approval is required.
+
+# Reporting of adverse events
+
+Not applicable (non-interventional mock study using simulated data).
+
+# References
+
+::: {#refs}
+:::
+
+# Appendices
+
+- **Appendix A:** `mock-study/02_data_generation.R` — defines `generate_cohort()`, the in-memory cohort simulation function.
+- **Appendix B:** `mock-study/03_primary_endpoint_analysis.qmd` — primary endpoint analysis report (propensity-score weighting, Table 1, Cox model, cumulative incidence curves).
+
+# Session info
+
+## Loaded packages
+
+```{r}
+#| label: session-packages
+#| echo: true
+
+subset(
+  as.data.frame(utils::installed.packages()[, c("Package", "Version")]),
+  Package %in% c("dplyr", "gt", "simsurv", "WeightIt", "cobalt",
+                 "survey", "gtsummary", "survival", "ggsurvfit", "ggplot2")
+)
+```
+
+## Session info
+
+```{r}
+#| label: session-info
+#| echo: true
+utils::sessionInfo()
+```
+
+## Repositories
+
+```{r}
+#| label: session-repos
+#| echo: true
+getOption("repos")
+```

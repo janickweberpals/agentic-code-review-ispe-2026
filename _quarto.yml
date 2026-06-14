@@ -1,7 +1,7 @@
 project:
   type: book
   pre-render: # pre-render Quarto presentations
-  - _pre_render.R
+  - _render_presentation.R
 
 book:
   title: "Agentic Code Review and Validation"
@@ -20,12 +20,17 @@ book:
           city: 
   chapters:
     - index.qmd # landing page
+    - part: "Mock study"
+      chapters:
+        - mock-study/01_csp.qmd
+        - mock-study/03_primary_endpoint_analysis.qmd
   reader-mode: true
-  repo-url: https://github.com/janickweberpals/icpe-git-2025
+  repo-url: https://github.com/janickweberpals/agentic-code-review-ispe-2026
   repo-actions: [issue]
 
 format:
   html:
+    embed-resources: true
     code-fold: true
     code-summary: "Show the code"
     theme: cosmo
@@ -36,6 +41,6 @@ format:
     # comments:
     #   hypothesis: true
 
-# bibliography: references.bib
-# csl: epidemiology.csl
+bibliography: references.bib
+csl: pharmacoepidemiology-and-drug-safety.csl
 
