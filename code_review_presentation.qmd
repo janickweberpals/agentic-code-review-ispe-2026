@@ -16,7 +16,7 @@ author:
 format:
   revealjs: 
     theme: custom.scss
-    logo: ../images/icpe26_logo.jpg
+    logo: images/icpe26_logo.jpg
     footer: An Introduction to Agentic Coding Assistants
     incremental: false 
     width: 1280
@@ -122,7 +122,7 @@ library(gt)
 ::: {.column width="50%" style="font-size: 0.65em;"}
 - **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
 - **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
-- **Limited formal formal training** in programming, version control, and software development best practices
+- **Limited formal training** in programming, version control, and software development best practices
 - **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
 - **Operational Transparency**: Uses style guides and detailed documentation to [ensure analytic decisions are clear, consistent, and easily traceable by others]{style="color: #B22222;"}
 - **Cultural Shift**: Normalizes error-finding as a group problem-solving exercise, moving the field toward a [collective "culture of reproducibility"]{style="color: #B22222;"} rather than individual perfection
@@ -183,7 +183,7 @@ library(gt)
 
 ![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
-## Code Review - Demo [placeholder]
+## Code Review - Demo [placeholder] {visibility="hidden"}
 
 PLACEHOLDER
 
