@@ -27,6 +27,7 @@ This repository supports an educational workshop on using agentic coding assista
 │   ├── 02_data_generation.R       # Synthetic data generation
 │   └── 03_primary_endpoint_analysis.qmd  # Primary analysis script
 ├── images/                        # Figures and diagrams used in slides
+├── .github/workflows/publish.yml  # CI/CD: render & deploy to GitHub Pages
 ├── .claude/                       # Claude Code configuration
 │   ├── CLAUDE.md                  # Project-level AI assistant instructions
 │   └── agents/
@@ -64,15 +65,11 @@ renv::restore()
 
 ## Rendering the Presentation
 
-```r
-source("_render_presentation.R")
-```
-
-Or directly via Quarto CLI:
-
 ```bash
 quarto render code_review_presentation.qmd
 ```
+
+The full site (book + embedded presentation) is built and deployed automatically via GitHub Actions on every push to `main`.
 
 ---
 
