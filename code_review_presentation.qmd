@@ -16,7 +16,7 @@ author:
 format:
   revealjs: 
     theme: custom.scss
-    logo: icpe26_logo.jpg
+    logo: ../images/icpe26_logo.jpg
     footer: An Introduction to Agentic Coding Assistants
     incremental: false 
     width: 1280
@@ -25,12 +25,15 @@ format:
     code-summary: "Show code"
     code-line-numbers: true
     embed-resources: true
-    toc: true
+    toc: false
     toc-depth: 1
     slide-number: true
+    link-external-newwindow: true
   
 bibliography: references.bib
 csl: pharmacoepidemiology-and-drug-safety.csl
+
+editor: visual
 ---
 
 ```{r}
@@ -50,7 +53,7 @@ library(gt)
 -   JW does not have any financial or personal relationships with Anthropic, Microsoft, or OpenAI, that could influence the content of this presentation.
 :::
 
-## Structure Brainstorming
+## Structure Brainstorming {visibility="hidden"}
 
 -   WHY code review and validation is important in pharmacoepidemiology
     -   Code review and validation (differences)
@@ -68,52 +71,50 @@ library(gt)
 
 ## The Hallmarks of Transparent and Reproducible Research
 
-:::: {.columns}
-
-::: {.column width="25%"}
-::: {.fragment}
-::: {.callout-note icon=false}
+::::::::::::::: columns
+::::: {.column width="25%"}
+:::: fragment
+::: {.callout-note icon="false"}
 ## 📋 Pre-specification
 
-- Research questions, study design, and analysis plan defined **before** looking at outcomes (stratified by exposure status)
-- Pre-registration and publication of study protocols and analysis plans
+-   Research questions, study design, and analysis plan defined **before** looking at outcomes (stratified by exposure status)
+-   Pre-registration and publication of study protocols and analysis plans
 :::
-:::
-:::
+::::
+:::::
 
-::: {.column width="25%"}
-::: {.fragment}
-::: {.callout-note icon=false}
+::::: {.column width="25%"}
+:::: fragment
+::: {.callout-note icon="false"}
 ## 🔀 Version Control & Code Sharing
 
-- Track changes made to your code
-- Make it publicly available (GitHub, GitLab, OSF, etc.)
+-   Track changes made to your code
+-   Make it publicly available (GitHub, GitLab, OSF, etc.)
 :::
-:::
-:::
+::::
+:::::
 
-::: {.column width="25%"}
-::: {.fragment}
-::: {.callout-important icon=false}
+::::: {.column width="25%"}
+:::: fragment
+::: {.callout-important icon="false"}
 ## 🔍 Code Review & Validation
 
-- [**Systematic examination and independent verification of analytic code**]{style="color: #8B0000;"}
+-   [**Systematic examination and independent verification of analytic code**]{style="color: #8B0000;"}
 :::
-:::
-:::
+::::
+:::::
 
-::: {.column width="25%"}
-::: {.fragment}
-::: {.callout-note icon=false}
+::::: {.column width="25%"}
+:::: fragment
+::: {.callout-note icon="false"}
 ## 📝 Documentation & Reporting
 
-- Structured, transparent reporting of methods and results
-- Follow reporting guidelines (e.g., RECORD-PE, STROBE, etc.)
+-   Structured, transparent reporting of methods and results
+-   Follow reporting guidelines (e.g., RECORD-PE, STROBE, etc.)
 :::
-:::
-:::
-
 ::::
+:::::
+:::::::::::::::
 
 ## Code Review - The Why?
 
@@ -125,14 +126,14 @@ library(gt)
 ## Consequences of Poor Code Quality (i)
 
 | Severity | Consequence |
-|:--------:|:------------|
+|:------------------------------:|:---------------------------------------|
 | 🟡 **Best case** | [Inability to re-run the code *(by peers, collaborators, or your future self)*]{style="color: #DAA520;"} |
 | 📊 | [Implemented analytics do not reflect the intended study design and analysis plan]{style="color: #D2691E;"} |
 | ⚠️ | [Misspecification errors through incorrect coding of exposures, covariates, or outcomes]{style="color: #CC4400;"} |
 | 🔐 | [Security vulnerabilities through hardcoding of credentials, API keys, and secrets]{style="color: #B22222;"} |
 | 🔴 **Worst case** | [**Invalid results and conclusions, retractions, and loss of trust** in the scientific community]{style="color: #8B0000;"} |
 
-: {tbl-colwidths="[15,85]"}
+: {tbl-colwidths="\[15,85\]"}
 
 ## Consequences of Poor Code Quality (ii)
 
@@ -142,83 +143,114 @@ library(gt)
 
 **The Peer Review for Code**
 
-:::: {.columns}
-
-::: {.column width="50%"}
-::: {.callout-note}
+::::::: columns
+:::: {.column width="50%"}
+::: callout-note
 ## What is **Code Review**?
-- [Systematic examination of source code]{style="color: #B22222;"} by one or more reviewers
-- Aimed at identifying bugs, security vulnerabilities, logic errors, and deviations from the analysis plan
-- Ensures code is readable, maintainable, and well-documented
-:::
-:::
 
-::: {.column width="50%"}
-::: {.callout-tip}
-## What is **Code Validation**?
-
-- Confirmation that implemented code produces correct and intended results
-- Includes [unit-testing]{style="color: #B22222;"} with known inputs and expected outputs
-- Verifies that analytic code matches the pre-specified study design/protocol
-- Ensures reproducibility across environments and analysts (*will my code run and produce the same results on another computer?*)
+-   [Systematic examination of source code]{style="color: #B22222;"} by one or more reviewers
+-   Aimed at identifying bugs, security vulnerabilities, logic errors, and deviations from the analysis plan
+-   Ensures code is readable, maintainable, and well-documented
 :::
-:::
-
 ::::
 
-# Code Review - The How?
+:::: {.column width="50%"}
+::: callout-tip
+## What is **Code Validation**?
 
-## Materials on Version Control and Code Sharing
-
-::: {.callout-note}
-## Key References
-
-- [ICPE 2025 pre-conference course materials](https://janickweberpals.github.io/icpe-git-2025/)
-
-- Weberpals J and Wang SV. The FAIRification of research in real-world evidence: A practical introduction to reproducible analytic workflows using Git and R. Pharmacoepidemiol Drug Saf. 2024 Jan;33(1):e5740. [doi: 10.1002/pds.5740.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5740) [@weberpals2024fairification]
-
-- Tazare J, Wang SV, Gini R, et al. Sharing Is Caring? International Society for Pharmacoepidemiology Review and Recommendations for Sharing Programming Code. Pharmacoepidemiol Drug Saf. 2024 Sep;33(9):e5856. [doi: 10.1002/pds.5856.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5856) [@SharingCaring]
-
-- Schultze A, Tazare J. The role of programming code sharing in improving the transparency of medical research. BMJ. 2023 Oct 17;383:2402. [doi: 10.1136/bmj.p2402](https://www.bmj.com/content/383/bmj.p2402.long). [@schultze2023role]
-
-- [Pharmacoepidemiology and Drug Safety Special Issue on Pharmacoepidemiology Research Reproducibility](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1099-1557.research-reproducibility)
+-   Confirmation that implemented code produces correct and intended results
+-   Includes [unit-testing]{style="color: #B22222;"} with known inputs and expected outputs
+-   Verifies that [analytic code matches the pre-specified study design/protocol]{style="color: #B22222;"} 
+-   Ensures reproducibility across environments and analysts (*will my code run and produce the same results on another computer?*)
 :::
+::::
+:::::::
+
+# Code Review - The How?
 
 ## Code Review - Pull Request Workflow
 
 ![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
+## Coding Agents[@raschka2026components; @mindstudio2026harness]
+
+![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions](images/ai_coding_agent_architecture.png){#fig-pr-workflow width="95%"}
+
 ## Context: Repository Structure as Agent Memory
 
-:::: {.columns}
+::::::: columns
+::::: {.column width="50%"}
+::: {.callout-tip icon="false" style="font-size: 0.7em;"}
+## 🤖 Coding Agents Are Context Hungry
 
-::: {.column width="50%"}
-[A well-organized repository gives a coding agent the **full context** of a study:]{style="font-size: 0.8em;"}
-
-::: {style="font-size: 0.7em;"}
-- 📄 **Protocol & analysis plan** — defines the *intended* study design the code should implement
-- 💻 **Analysis scripts** — the code to be reviewed, in logical order
-- 📦 **Dependencies & environment** — ensures the agent understands the software stack
-- 📚 **References & documentation** — provides scientific and methodological context
-- 🗂️ **Data dictionaries** — clarifies variable names, codings, and units
-:::
-
-::: {.callout-tip icon=false style="font-size: 0.7em;"}
-## 🤖 Why it matters
 The richer the context, the more targeted and accurate the agentic code review
 :::
+
+::: {style="font-size: 0.7em;"}
+-   📄 **Protocol & analysis plan** — defines the *intended* study design the code should implement
+-   💻 **Analysis scripts** — the code to be reviewed, in logical order
+-   📦 **Dependencies & environment** — ensures the agent understands the software stack
+-   📚 **References & documentation** — provides scientific and methodological context
+-   🗂️ **Data dictionaries** — clarifies variable names, codings, and units
+-   🗂️ **External Information** — additional external context such as software packages used or common data model concepts (e.g., via MCP servers)
 :::
+
+:::::
 
 ::: {.column width="50%"}
 ![An organized repository structure provides rich context about the intended study & analysis](images/repo_structure.png){#fig-repo-structure width="100%" style="max-height: 500px; object-fit: contain;"}
 :::
+:::::::
 
-::::
+## Claude Code - an overview
 
-## Claude Code - multiagentic code review
+::::::: columns
+::: {.column width="50%" style="font-size: 0.8em;"}
+- Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
+- Available in in terminal (command line), IDE, desktop app, and browser
+- Supports [**slash commands**]{style="color: #B22222;"} and custom [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
+- Customizable to a specific user (`~/.claude`), project, and task (`~/project/.claude`) using a dedicated `.claude` directory in the repository
+- [Generic Code Review plugin](https://github.com/anthropics/claude-code/blob/main/plugins/code-review/README.md) that can be invoked via `/code-review` slash command
+- No free version, subscription-based or token-based pricing
+:::
+
+::: {.column width="50%"}
+![Claude's abilities are customizable. [Learn more](https://code.claude.com/docs/en/claude-directory#ce-agent-reviewer)](images/claude-directory.png){#fig-claude-directory width="100%"}
+:::
+:::::::
+
+## Anatomy of `\code-review` agent
+
+
+
+## Claude Code - multiagentic code review (placeholder)
 
 {{< video "https://www.youtube-nocookie.com/embed/RKsADl0ZC3Y?si=y8GEOERtR3P9-eMm" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
 Video courtesy of Anthropic
+
+## Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]
+
+{{< video "https://www.youtube-nocookie.com/embed/xvhYmGz_x74?si=fS86anQWzkdXIXUa" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
+
+## Materials on Version Control and Code Sharing
+
+::: callout-note
+## Key References
+
+-   [ICPE 2025 pre-conference course materials](https://janickweberpals.github.io/icpe-git-2025/)
+
+-   Weberpals J and Wang SV. The FAIRification of research in real-world evidence: A practical introduction to reproducible analytic workflows using Git and R. Pharmacoepidemiol Drug Saf. 2024 Jan;33(1):e5740. [doi: 10.1002/pds.5740.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5740) [@weberpals2024fairification]
+
+-   Tazare J, Wang SV, Gini R, et al. Sharing Is Caring? International Society for Pharmacoepidemiology Review and Recommendations for Sharing Programming Code. Pharmacoepidemiol Drug Saf. 2024 Sep;33(9):e5856. [doi: 10.1002/pds.5856.](https://onlinelibrary.wiley.com/doi/10.1002/pds.5856) [@SharingCaring]
+
+-   Schultze A, Tazare J. The role of programming code sharing in improving the transparency of medical research. BMJ. 2023 Oct 17;383:2402. [doi: 10.1136/bmj.p2402](https://www.bmj.com/content/383/bmj.p2402.long). [@schultze2023role]
+
+-   [Pharmacoepidemiology and Drug Safety Special Issue on Pharmacoepidemiology Research Reproducibility](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1099-1557.research-reproducibility)
+:::
+
+## Famous final words
+
+![Linus Torvalds, developer of `git` and `Linux`](images/talk-is-cheap.jpg){#fig-talk width="100%"}
 
 ## References
