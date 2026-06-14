@@ -1,8 +1,6 @@
 project:
   type: book
-  render:
-    - "*.qmd"
-    - "mock-study/*.qmd"
+  post-render: _render_presentation.R
 
 book:
   title: "Agentic Code Review and Validation"
