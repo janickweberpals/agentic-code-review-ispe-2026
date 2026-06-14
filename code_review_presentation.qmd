@@ -119,7 +119,7 @@ library(gt)
 ## Code Review - The Why?[@vable2021code]
 
 ::::::: columns
-::: {.column width="50%" style="font-size: 0.65em;"}
+::: {.column style="width:50%; font-size: 0.65em;"}
 - **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
 - **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
 - **Limited formal training** in programming, version control, and software development best practices
@@ -220,7 +220,7 @@ The richer the context, the more targeted and accurate the agentic code review
 ## Claude Code - an overview
 
 ::::::: columns
-::: {.column width="50%" style="font-size: 0.8em;"}
+::: {.column style="width:50%; font-size: 0.8em;"}
 - Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
 - Available in in terminal (command line), IDE, desktop app, and browser
 - Supports [**slash commands**]{style="color: #B22222;"} and custom [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
