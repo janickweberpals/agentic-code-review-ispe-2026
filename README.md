@@ -50,7 +50,7 @@ This repository supports an educational workshop on using agentic coding assista
 
 ## Requirements
 
-- [R](https://www.r-project.org/) (≥ 4.3)
+- [R](https://www.r-project.org/) (≥ 4.5)
 - [Quarto](https://quarto.org/) (≥ 1.5)
 - R packages managed via [`renv`](https://rstudio.github.io/renv/) — restore with:
 

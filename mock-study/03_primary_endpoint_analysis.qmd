@@ -21,9 +21,6 @@ library(scales)
 library(knitr)
 
 theme_gtsummary_compact()
-
-# seed for reproducibility of the simulated data (not needed in real-world analyses)
-set.seed(20260614)
 ```
 
 ## Background
@@ -256,8 +253,8 @@ risk_tbl <- data.frame(
   Group         = sub("treatment_label=", "", risk_1yr$strata),
   `1-year risk` = sprintf("%.1f%% (95%% CI, %.1f%%-%.1f%%)",
                           100 * (1 - risk_1yr$surv),
-                          100 * (1 - risk_1yr$upper),
-                          100 * (1 - risk_1yr$lower)),
+                          100 * (1 - risk_1yr$lower),
+                          100 * (1 - risk_1yr$upper)),
   check.names = FALSE
 )
 kable(risk_tbl, caption = "Table 3. ATO-weighted 1-year risk by arm")
