@@ -190,7 +190,7 @@ PLACEHOLDER
 ## Code Review - Automating Validation
 
 - Unit-tests are a powerful tool for automating the validation of code correctness and protocol adherence (e.g., using `testthat` in R)
-- [**`testthat`**]{style="color: #B22222;"} is not limited to package development — it can automate validation in any applied analytical study
+- Unit-testing can automate validation in any applied analytical study and covered **units** are quantifiable
 
 ::::: columns
 ::: {.column style="width: 50%; font-size: 0.72em;"}
