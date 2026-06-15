@@ -1,11 +1,2 @@
-# scripts to run before rendering the website
-
-# Load required packages
-library(quarto)
-
-# render GitHub Copilot presentation
-quarto::quarto_render(
-  input = "code_review_presentation.qmd",
-  output_format = "revealjs",
-  output_file = "code_review_presentation.html"
-)
+system("quarto render code_review_presentation.qmd")
+file.copy("code_review_presentation.html", "_book/code_review_presentation.html", overwrite = TRUE)

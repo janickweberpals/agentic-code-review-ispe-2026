@@ -118,15 +118,15 @@ library(gt)
 
 ## Code Review - The Why?[@vable2021code]
 
-::::: columns
-::: {.column style="width: 50%; font-size: 0.65em;"}
--   **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
--   **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
--   **Limited formal training** in programming, version control, and software development best practices
--   **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
--   **Operational Transparency**: Uses style guides and detailed documentation to [ensure analytic decisions are clear, consistent, and easily traceable by others]{style="color: #B22222;"}
--   **Cultural Shift**: Normalizes error-finding as a group problem-solving exercise, moving the field toward a [collective "culture of reproducibility"]{style="color: #B22222;"} rather than individual perfection
--   **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #B22222;"}, which reduces the volume of new, unverified programming for each study.
+::::::: columns
+::: {.column style="width:50%; font-size: 0.65em;"}
+- **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
+- **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
+- **Limited formal training** in programming, version control, and software development best practices
+- **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
+- **Operational Transparency**: Uses style guides and detailed documentation to [ensure analytic decisions are clear, consistent, and easily traceable by others]{style="color: #B22222;"}
+- **Cultural Shift**: Normalizes error-finding as a group problem-solving exercise, moving the field toward a [collective "culture of reproducibility"]{style="color: #B22222;"} rather than individual perfection
+- **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #B22222;"}, which reduces the volume of new, unverified programming for each study.
 :::
 
 ::: {.column width="50%"}
@@ -257,14 +257,14 @@ The richer the context, the more targeted and accurate the agentic code review
 
 ## Claude Code - an overview
 
-::::: columns
-::: {.column style="width: 50%; font-size: 0.8em;"}
--   Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
--   Available in in terminal (command line), IDE, desktop app, and browser
--   Supports [**slash commands**]{style="color: #B22222;"} and custom [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
--   Customizable to a specific user (`~/.claude`), project, and task (`~/project/.claude`) using a dedicated `.claude` directory in the repository
--   [Generic Code Review plugin](https://github.com/anthropics/claude-code/blob/main/plugins/code-review/README.md) that can be invoked via `/code-review` slash command
--   No free version, subscription-based or token-based pricing
+::::::: columns
+::: {.column style="width:50%; font-size: 0.8em;"}
+- Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
+- Available in in terminal (command line), IDE, desktop app, and browser
+- Supports [**slash commands**]{style="color: #B22222;"} and custom [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
+- Customizable to a specific user (`~/.claude`), project, and task (`~/project/.claude`) using a dedicated `.claude` directory in the repository
+- [Generic Code Review plugin](https://github.com/anthropics/claude-code/blob/main/plugins/code-review/README.md) that can be invoked via `/code-review` slash command
+- No free version, subscription-based or token-based pricing
 :::
 
 ::: {.column width="50%"}

@@ -20,6 +20,7 @@ This repository supports an educational workshop on using agentic coding assista
 ```
 .
 ├── code_review_presentation.qmd   # Main RevealJS slide deck (Quarto)
+├── _render_presentation.R         # Post-render script: renders & copies slide deck to _book/
 ├── custom.scss                    # Custom presentation theme
 ├── references.bib                 # Bibliography
 ├── mock-study/                    # Example pharmacoepidemiology study
@@ -27,6 +28,7 @@ This repository supports an educational workshop on using agentic coding assista
 │   ├── 02_data_generation.R       # Synthetic data generation
 │   └── 03_primary_endpoint_analysis.qmd  # Primary analysis script
 ├── images/                        # Figures and diagrams used in slides
+├── .github/workflows/publish.yml  # CI/CD: render & deploy to GitHub Pages
 ├── .claude/                       # Claude Code configuration
 │   ├── CLAUDE.md                  # Project-level AI assistant instructions
 │   └── agents/
@@ -62,17 +64,15 @@ renv::restore()
 
 ---
 
-## Rendering the Presentation
-
-```r
-source("_render_presentation.R")
-```
-
-Or directly via Quarto CLI:
+## Rendering
 
 ```bash
-quarto render code_review_presentation.qmd
+quarto render
 ```
+
+This builds the full site — book chapters and the embedded RevealJS presentation — in one step. The post-render script (`_render_presentation.R`) handles rendering the slide deck and placing it in `_book/` automatically.
+
+The site is also built and deployed to GitHub Pages automatically via GitHub Actions on every push to `main`.
 
 ---
 
