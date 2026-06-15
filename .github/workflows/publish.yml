@@ -32,15 +32,6 @@ jobs:
         with:
           cache-version: 2
 
-      - name: Render presentation
-        run: quarto render code_review_presentation.qmd
-
-      - name: Render book
-        run: quarto render
-
-      - name: Copy presentation into book output
-        run: cp code_review_presentation.html _book/
-
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
