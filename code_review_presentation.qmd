@@ -33,7 +33,7 @@ format:
 bibliography: references.bib
 csl: pharmacoepidemiology-and-drug-safety.csl
 
-editor: visual
+editor: source
 ---
 
 ```{r}
@@ -118,21 +118,21 @@ library(gt)
 
 ## Code Review - The Why?[@vable2021code]
 
-::::::: columns
-::: {.column width="50%" style="font-size: 0.65em;"}
-- **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
-- **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
-- **Limited formal training** in programming, version control, and software development best practices
-- **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
-- **Operational Transparency**: Uses style guides and detailed documentation to [ensure analytic decisions are clear, consistent, and easily traceable by others]{style="color: #B22222;"}
-- **Cultural Shift**: Normalizes error-finding as a group problem-solving exercise, moving the field toward a [collective "culture of reproducibility"]{style="color: #B22222;"} rather than individual perfection
-- **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #B22222;"}, which reduces the volume of new, unverified programming for each study.
+::::: columns
+::: {.column style="width: 50%; font-size: 0.65em;"}
+-   **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
+-   **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
+-   **Limited formal training** in programming, version control, and software development best practices
+-   **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
+-   **Operational Transparency**: Uses style guides and detailed documentation to [ensure analytic decisions are clear, consistent, and easily traceable by others]{style="color: #B22222;"}
+-   **Cultural Shift**: Normalizes error-finding as a group problem-solving exercise, moving the field toward a [collective "culture of reproducibility"]{style="color: #B22222;"} rather than individual perfection
+-   **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #B22222;"}, which reduces the volume of new, unverified programming for each study.
 :::
 
 ::: {.column width="50%"}
 ![Systematic code review serves as a critical safeguard against human error in data analysis, enhancing research quality and transparency while fostering a collective culture of reproducibility within the scientific community.[@vable2021code]](images/Vable-et-al.-2021.png){#fig-aje-2021 fig-cap-location="bottom" style="font-size: 0.6em;"}
 :::
-:::::::
+:::::
 
 ## Consequences of Poor Code Quality (i)
 
@@ -171,7 +171,7 @@ library(gt)
 
 -   Confirmation that implemented code produces correct and intended results
 -   Includes [unit-testing]{style="color: #B22222;"} with known inputs and expected outputs
--   Verifies that [analytic code matches the pre-specified study design/protocol]{style="color: #B22222;"} 
+-   Verifies that [analytic code matches the pre-specified study design/protocol]{style="color: #B22222;"}
 -   Ensures reproducibility across environments and analysts (*will my code run and produce the same results on another computer?*)
 :::
 ::::
@@ -183,13 +183,52 @@ library(gt)
 
 ![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
-## Code Review - Demo [placeholder] {visibility="hidden"}
+## Code Review - Demo \[placeholder\]
 
 PLACEHOLDER
 
+## Code Review - Automating Validation
+
+- Unit-tests are a powerful tool for automating the validation of code correctness and protocol adherence (e.g., using `testthat` in R)
+- [**`testthat`**]{style="color: #B22222;"} is not limited to package development — it can automate validation in any applied analytical study
+
+::::: columns
+::: {.column style="width: 50%; font-size: 0.72em;"}
+**Structural accuracy** — does the model output make sense?
+
+```
+test_that("ATO weights are strictly positive", {
+  expect_true(all(W$weights > 0))
+})
+```
+
+::: {.callout-note icon="false" style="font-size: 0.75em;"}
+ATO weights equal `ps` (controls) or `1 − ps` (treated). Since `ps ∈ (0, 1)`, a weight ≤ 0 signals a wrong `estimand` or a degenerate propensity score.
+:::
+:::
+
+::: {.column style="width: 50%; font-size: 0.72em;"}
+**Protocol adherence** — does the code match the pre-specified design?
+
+"*The study window spans from a 365-day washout period before index date (time 0)
+through up to 365 days of follow-up.*"
+
+```
+test_that("all event times ≤ 365 days (CSP §8.3)", {
+  events <- cohort[cohort$status == 1, ]
+  expect_true(all(events$time <= 365))
+})
+```
+
+::: {.callout-warning icon="false" style="font-size: 0.75em;"}
+A failure means the censoring logic no longer matches the follow-up window defined in the CSP — catching a silent protocol deviation.
+:::
+:::
+:::::
+
 ## Coding Agents[@raschka2026components; @mindstudio2026harness]
 
-![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions](images/ai_coding_agent_architecture.png){#fig-pr-workflow width="95%"}
+![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions](images/ai_coding_agent_architecture.png){width="95%"}
 
 ## Context: Repository Structure as Agent Memory
 
@@ -209,7 +248,6 @@ The richer the context, the more targeted and accurate the agentic code review
 -   🗂️ **Data dictionaries** — clarifies variable names, codings, and units
 -   🗂️ **External Information** — additional external context such as software packages used or common data model concepts (e.g., via MCP servers)
 :::
-
 :::::
 
 ::: {.column width="50%"}
@@ -219,25 +257,25 @@ The richer the context, the more targeted and accurate the agentic code review
 
 ## Claude Code - an overview
 
-::::::: columns
-::: {.column width="50%" style="font-size: 0.8em;"}
-- Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
-- Available in in terminal (command line), IDE, desktop app, and browser
-- Supports [**slash commands**]{style="color: #B22222;"} and custom [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
-- Customizable to a specific user (`~/.claude`), project, and task (`~/project/.claude`) using a dedicated `.claude` directory in the repository
-- [Generic Code Review plugin](https://github.com/anthropics/claude-code/blob/main/plugins/code-review/README.md) that can be invoked via `/code-review` slash command
-- No free version, subscription-based or token-based pricing
+::::: columns
+::: {.column style="width: 50%; font-size: 0.8em;"}
+-   Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
+-   Available in in terminal (command line), IDE, desktop app, and browser
+-   Supports [**slash commands**]{style="color: #B22222;"} and custom [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
+-   Customizable to a specific user (`~/.claude`), project, and task (`~/project/.claude`) using a dedicated `.claude` directory in the repository
+-   [Generic Code Review plugin](https://github.com/anthropics/claude-code/blob/main/plugins/code-review/README.md) that can be invoked via `/code-review` slash command
+-   No free version, subscription-based or token-based pricing
 :::
 
 ::: {.column width="50%"}
 ![Claude's abilities are customizable. [Learn more](https://code.claude.com/docs/en/claude-directory#ce-agent-reviewer)](images/claude-directory.png){#fig-claude-directory width="100%"}
 :::
-:::::::
+:::::
 
 ## Anatomy of `/code-reviewer` agent {.scrollable}
 
 ::: {style="font-size: 0.62em; white-space: pre-wrap;"}
-```markdown
+``` markdown
 ---
 name: code-reviewer
 description: Reviews code changes for bugs, security issues, performance problems, and style.
