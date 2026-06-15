@@ -32,6 +32,9 @@ jobs:
         with:
           cache-version: 2
 
+      - name: Render Quarto Book
+        run: quarto render
+
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
