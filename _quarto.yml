@@ -1,6 +1,9 @@
 project:
   type: book
-  post-render: _render_presentation.R
+  pre-render: # pre-render Quarto presentations
+  - _render_presentation.R
+  resources:
+    - code_review_presentation.html
 
 book:
   title: "Agentic Code Review and Validation"
@@ -23,6 +26,7 @@ book:
       chapters:
         - mock-study/01_csp.qmd
         - mock-study/03_primary_endpoint_analysis.qmd
+        - mock-study/04_validation.qmd
   reader-mode: true
   repo-url: https://github.com/janickweberpals/agentic-code-review-ispe-2026
   repo-actions: [issue]
