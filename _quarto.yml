@@ -1,9 +1,6 @@
 project:
   type: book
-  pre-render: # pre-render Quarto presentations
-  - _render_presentation.R
-  resources:
-    - code_review_presentation.html
+  post-render: _render_presentation.R
 
 book:
   title: "Agentic Code Review and Validation"
