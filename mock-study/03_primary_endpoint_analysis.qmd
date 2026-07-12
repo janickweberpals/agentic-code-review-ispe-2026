@@ -47,10 +47,8 @@ weighted Cox proportional-hazards model.
 ```{r}
 #| label: load-data
 # Generate the simulated cohort in memory by sourcing the data-generation
-# function (nothing is read from / written to disk). Resolve the script path
-# whether rendered from the project root or from inside mock-study/.
-gen_script <- c("02_data_generation.R", file.path("mock-study", "02_data_generation.R"))
-source(gen_script[file.exists(gen_script)][1])
+# function (nothing is read from / written to disk).
+source("/Users/janick/Desktop/02_data_generation.R")
 cohort <- generate_cohort()
 
 # Confounders to adjust for (baseline covariates).
@@ -58,7 +56,7 @@ covariates <- c(
   "age", "female", "race", "region",
   "bmi", "prior_hf_hosp", "diuretic_use",
   "nephropathy", "neuropathy", "retinopathy", "foot_ulcer", "insulin_use",
-  "pad", "afib", "cardiomyopathy", "ckd",
+  "pad", "afib", "cardiomyopathy",
   "copd", "depression", "dementia",
   "metformin", "sulfonylurea", "sglt2i", "statin", "anticoagulant",
   "n_hospitalizations", "n_ed_visits", "n_distinct_meds", "comorbidity_index"
@@ -128,7 +126,7 @@ W <- weightit(
   ps_formula,
   data      = cohort,
   method    = "glm",     # logistic-regression propensity score
-  estimand  = "ATO"      # average treatment effect in the overlap population
+  estimand  = "ATT"      # average treatment effect in the overlap population
 )
 
 cohort$ato_weight <- W$weights
@@ -218,8 +216,7 @@ proportional-hazards model incorporating the overlap weights. Robust
 cox_wt <- coxph(
   Surv(time, status) ~ treatment_label,
   data    = cohort,
-  weights = cohort$ato_weight,
-  robust  = TRUE
+  weights = cohort$ato_weight
 )
 
 tbl_regression(cox_wt, exponentiate = TRUE) |>
