@@ -1,5 +1,5 @@
 ---
-name: code-review
+name: code-reviewer
 disable-model-invocation: true
 description: Run a code review on recent changes, a specific file, a commit, or a pull request. Use when the user asks to review code, check a diff, review a PR, or get feedback before committing.
 ---

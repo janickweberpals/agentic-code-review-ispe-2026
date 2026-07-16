@@ -7,7 +7,7 @@ author:
   - name: Janick Weberpals, RPh, PhD
     corresponding: true
     orcid: 0000-0003-0404-7394
-    email: jweberpals.academic@gmail.com
+    email: 
     url: janickweberpals.github.io
     affiliations:
       - name: AI for Clinical Intelligence and Evidence, AstraZeneca
@@ -48,8 +48,8 @@ library(gt)
 
 ::: callout-important
 ## Disclosure
-
--   JW is an employee of the Enterprise AI organization within AstraZeneca and own shares in AstraZeneca. The views and opinions expressed in this presentation are those of the author and do not necessarily reflect the official policy or position of AstraZeneca. The author is presenting in a personal capacity.
+-   JW is an employee of the Enterprise AI organization within AstraZeneca and own shares in AstraZeneca.
+<!-- -  The views and opinions expressed in this presentation are those of the author and do not necessarily reflect the official policy or position of AstraZeneca. The author is presenting in a personal capacity. -->
 -   JW does not have any financial or personal relationships with Anthropic, Microsoft, or OpenAI, that could influence the content of this presentation.
 - Some content in this presentation was generated using Claude Sonnet 5
 :::
@@ -121,13 +121,13 @@ library(gt)
 
 ::::::: columns
 ::: {.column style="width:50%; font-size: 0.65em;"}
-- **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #B22222;"} which combines knowledge about data, study design, and statistical methods
+- **Pharmacoepidemiology** is a [quantitative discipline]{style="color: #830051;"} which combines knowledge about data, study design, and statistical methods
 - **Core competency**: Implementation of a study (data wrangling, statistical analysis) through analytic programming and reproducible code
 - **Limited formal training** in programming, version control, and software development best practices
-- **Error Prevention**: [Coding bugs are inevitable]{style="color: #B22222;"} and code review acts as a ["safety net"]{style="color: #B22222;"}
-- **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #B22222;"}, which reduces the volume of new, unverified programming for each study
-- **Higher Impact**: Release of high-quality, validated code can [increase the impact of your research]{style="color: #B22222;"}, as others can build upon your work and reproduce your results
-- **Operational Transparency & Audit Trail**: Document decisions and have a complete [audit trail of all changes]{style="color: #B22222;"}, which increases traceability and transparency
+- **Error Prevention**: [Coding bugs are inevitable]{style="color: #830051;"} and code review acts as a ["safety net"]{style="color: #830051;"}
+- **Risk Mitigation**: Encourages the [use of validated modular code]{style="color: #830051;"}, which reduces the volume of new, unverified programming for each study
+- **Higher Impact**: Release of high-quality, validated code can [increase the impact of your research]{style="color: #830051;"}, as others can build upon your work and reproduce your results
+- **Operational Transparency & Audit Trail**: Document decisions and have a complete [audit trail of all changes]{style="color: #830051;"}, which increases traceability and transparency
 :::
 
 ::: {.column width="50%"}
@@ -181,9 +181,9 @@ What is **Code Validation**?
 
 ![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
-## Code Review - GitHub Demo \[placeholder\]
+## Code Review - GitHub Demo
 
-PLACEHOLDER
+{{< video "https://www.youtube-nocookie.com/embed/WpZEhvwd2vA?si=4jOGvvc1cR4WHzhK" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
 ## Code Validation and Unit-Testing
 
@@ -263,7 +263,7 @@ The richer the context, the more targeted and accurate the agentic code review
 ::: {.column style="width:50%; font-size: 0.8em;"}
 - Agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools
 - Available in in terminal (command line), IDE, desktop app, and browser
-- Supports structural (native) and contextual (customizable) [**slash commands**]{style="color: #B22222;"} [**skills**]{style="color: #B22222;"}, including [code review workflows]{style="color: #B22222;"}
+- Supports structural (native) and contextual (customizable) [**slash commands**]{style="color: #830051;"} [**skills**]{style="color: #830051;"}, including [code review workflows]{style="color: #830051;"}
 - Context customizable to a specific user (`~/.claude`), project, and task (`~/project/.claude`) using a dedicated `.claude` directory in the repository
 - [Generic Code Review plugin](https://github.com/anthropics/claude-code/blob/main/plugins/code-review/README.md) that can be invoked via `/code-review` slash command
 - No free version, subscription-based or token-based pricing
@@ -340,11 +340,9 @@ Be specific, cite exact lines, and suggest fixes rather than just naming problem
 ```
 :::
 
-## [Claude Code - Demo (placeholder)]{style="font-size: 0.8em;"}
+## Claude Code - Demo
 
-{{< video "https://www.youtube-nocookie.com/embed/RKsADl0ZC3Y?si=y8GEOERtR3P9-eMm" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
-
-Video courtesy of Anthropic
+{{< video "https://www.youtube-nocookie.com/embed/Um3ZNVcZOt4?si=hREAZjxKiElGSkZU" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
 ## Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]{style="font-size: 0.8em;"}
 
@@ -362,6 +360,17 @@ Video courtesy of Anthropic
 
 ![Linus Torvalds, developer of `git` and `Linux`](images/talk-is-cheap.jpg){#fig-talk width="100%"}
 
+## Acknowledgements
+
+::: callout-note
+## Thank You
+
+Many thanks to the following colleagues for their input and feedback on this presentation:
+
+-   **AstraZeneca (Enterprise AI)**: Alex Grigorenko, Leonidas Souliotis, Yannis Darhi, Sam Hillman
+-   **Transparency and Reproducibility A-team**: Anton Pottegard, Shirley V. Wang, Dani Prieto-Alhambra, Mina Tadrous
+:::
+
 ## Materials on Version Control and Code Sharing
 
 ::: callout-note
@@ -376,17 +385,6 @@ Video courtesy of Anthropic
 -   Schultze A, Tazare J. The role of programming code sharing in improving the transparency of medical research. BMJ. 2023 Oct 17;383:2402. [doi: 10.1136/bmj.p2402](https://www.bmj.com/content/383/bmj.p2402.long). [@schultze2023role]
 
 -   [Pharmacoepidemiology and Drug Safety Special Issue on Pharmacoepidemiology Research Reproducibility](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1099-1557.research-reproducibility)
-:::
-
-## Acknowledgements
-
-::: callout-note
-## Thank You
-
-Many thanks to the following colleagues for their input and feedback on this presentation:
-
--   **AstraZeneca (Enterprise AI)**: Alex Grigorenko, Leonidas Souliotis, Yannis Darhi, Sam Hillman
--   **Transparency and Reproducibility A-team**: Dani Prieto-Alhambra, Mina Tadrous, Shirley V. Wang, Anton Pottegard,  
 :::
 
 ## References
