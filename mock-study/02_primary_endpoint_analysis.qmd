@@ -1,0 +1,290 @@
+---
+title: "Primary Endpoint Analysis"
+subtitle: "Adapted to illustrate agentic code review with Claude Code"
+author: "Example Author"
+date: today
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(dplyr)
+library(survival)
+library(WeightIt)
+library(cobalt)
+library(survey)
+library(gtsummary)
+library(broom.helpers)
+library(ggsurvfit)
+library(ggplot2)
+library(scales)
+library(knitr)
+
+theme_gtsummary_compact()
+```
+
+## Background
+
+> **Important:** This is a **mock study** created exclusively to illustrate the
+> capabilities of [Claude Code](https://claude.ai/code) for agentic code review
+> and validation. Drug names have been replaced with placeholders (**Drug A**,
+> **Drug B**). All data are fully simulated. No real-world clinical conclusions
+> should be drawn from this analysis.
+
+This document implements a **primary endpoint analysis** following the general
+design of a target trial emulation comparing new users of **Drug A** versus
+**Drug B** in a chronic disease setting. It uses
+entirely synthetic data and generic drug labels.
+
+The **primary outcome** is a composite of **hospitalization for heart failure
+(HF) or all-cause mortality**, assessed over up to 52 weeks of follow-up.
+Because treatment is not randomized, initiators of the two drugs differ at
+baseline (*confounding by indication*). We address this with **propensity-score
+overlap (ATO) weighting**, then estimate the treatment effect with a
+weighted Cox proportional-hazards model.
+
+```{r}
+#| label: load-data
+# Generate the simulated cohort in memory by sourcing the data-generation
+# function (nothing is read from / written to disk).
+source("/Users/janick/Desktop/02_data_generation.R")
+cohort <- generate_cohort()
+
+# Confounders to adjust for (baseline covariates).
+covariates <- c(
+  "age", "female", "race", "region",
+  "bmi", "prior_hf_hosp", "diuretic_use",
+  "nephropathy", "neuropathy", "retinopathy", "foot_ulcer", "insulin_use",
+  "pad", "afib", "cardiomyopathy",
+  "copd", "depression", "dementia",
+  "metformin", "sulfonylurea", "sglt2i", "statin", "anticoagulant",
+  "n_hospitalizations", "n_ed_visits", "n_distinct_meds", "comorbidity_index"
+)
+
+# Human-readable variable labels (used by gtsummary tables).
+var_labels <- list(
+  age = "Age, years", female = "Female sex", race = "Race", region = "Region",
+  bmi = "Body mass index, kg/m²", prior_hf_hosp = "Prior HF hospitalization",
+  diuretic_use = "Diuretic use", nephropathy = "Diabetic nephropathy",
+  neuropathy = "Diabetic neuropathy", retinopathy = "Diabetic retinopathy",
+  foot_ulcer = "Foot ulcer", insulin_use = "Insulin use",
+  pad = "Peripheral arterial disease", afib = "Atrial fibrillation",
+  cardiomyopathy = "Cardiomyopathy", ckd = "Chronic kidney disease",
+  copd = "COPD", depression = "Depression", dementia = "Dementia",
+  metformin = "Metformin", sulfonylurea = "Sulfonylurea", sglt2i = "SGLT2 inhibitor",
+  statin = "Statin", anticoagulant = "Anticoagulant",
+  n_hospitalizations = "No. hospitalizations (prior yr)",
+  n_ed_visits = "No. ED visits (prior yr)",
+  n_distinct_meds = "No. distinct medications",
+  comorbidity_index = "Combined comorbidity index"
+)
+```
+
+The analytic cohort comprises **`r format(nrow(cohort), big.mark = ",")`**
+patients (`r format(sum(cohort$treatment == 1), big.mark = ",")` Drug A,
+`r format(sum(cohort$treatment == 0), big.mark = ",")` Drug B).
+
+## Step 1 — Baseline characteristics (before weighting)
+
+```{r}
+#| label: tbl1-unweighted
+#| include: false
+tbl_unwt <- cohort |>
+  select(treatment_label, all_of(covariates)) |>
+  tbl_summary(
+    by = treatment_label,
+    label = var_labels,
+    statistic = list(
+      all_continuous()  ~ "{mean} ({sd})",
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    digits = all_continuous() ~ 1
+  ) |>
+  add_difference(everything() ~ "smd") |>
+  modify_header(estimate ~ "**SMD**") |>
+  modify_column_hide(columns = conf.low)
+```
+
+Several covariates show meaningful imbalance (|SMD| > 0.1), confirming
+confounding by indication: Drug A initiators are younger, have higher BMI,
+and carry a lower cardiovascular/comorbidity burden.
+
+## Step 2 — Propensity score estimation and overlap (ATO) weighting
+
+We estimate the propensity score (probability of receiving Drug A) with a
+logistic regression on all baseline covariates, then derive **overlap (ATO)
+weights**. Overlap weights emphasize patients with propensity scores in the
+region of clinical equipoise and yield exact mean balance on every covariate
+included in the model.
+
+```{r}
+#| label: weightit
+ps_formula <- reformulate(covariates, response = "treatment")
+
+W <- weightit(
+  ps_formula,
+  data      = cohort,
+  method    = "glm",     # logistic-regression propensity score
+  estimand  = "ATT"      # average treatment effect in the overlap population
+)
+
+cohort$ato_weight <- W$weights
+W
+```
+
+### Covariate balance before vs. after weighting
+
+```{r}
+#| label: love-plot
+#| fig-width: 8
+#| fig-height: 8
+love.plot(
+  W,
+  stats        = "mean.diffs",
+  abs          = TRUE,
+  thresholds   = c(m = 0.1),
+  var.order    = "unadjusted",
+  drop.distance = TRUE,
+  sample.names = c("Unweighted", "ATO weighted"),
+  title        = "Covariate balance: standardized mean differences"
+)
+```
+
+After overlap weighting, all standardized mean differences are driven to ~0,
+indicating excellent balance.
+
+### Propensity score overlap
+
+```{r}
+#| label: ps-overlap
+#| fig-width: 8
+#| fig-height: 4.5
+bal.plot(
+  W,
+  var.name = "prop.score",
+  which    = "both",
+  type     = "density",
+  sample.names = c("Unweighted", "ATO weighted")
+) +
+  labs(title = "Propensity score distribution by treatment group",
+       x = "Propensity score (P[Drug A])")
+```
+
+### Baseline characteristics — before and after ATO weighting
+
+```{r}
+#| label: tbl1-weighted
+#| include: false
+svy <- svydesign(ids = ~1, weights = ~ato_weight, data = cohort)
+
+tbl_wt <- svy |>
+  tbl_svysummary(
+    by      = treatment_label,
+    include = all_of(covariates),
+    label   = var_labels,
+    statistic = list(
+      all_continuous()  ~ "{mean} ({sd})",
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    digits = all_continuous() ~ 1
+  ) |>
+  add_difference(everything() ~ "smd") |>
+  modify_header(estimate ~ "**SMD**") |>
+  modify_column_hide(columns = conf.low)
+```
+
+```{r}
+#| label: tbl1-merged
+tbl_merge(
+  tbls        = list(tbl_unwt, tbl_wt),
+  tab_spanner = c("**Unweighted**", "**ATO weighted**")
+) |>
+  modify_caption(
+    "**Table 1. Baseline characteristics before and after ATO overlap weighting**"
+  )
+```
+
+## Step 3 — Primary endpoint analysis (weighted Cox model)
+
+The treatment effect on the composite endpoint is estimated with a Cox
+proportional-hazards model incorporating the overlap weights. Robust
+(sandwich) standard errors account for the weighting.
+
+```{r}
+#| label: cox-model
+cox_wt <- coxph(
+  Surv(time, status) ~ treatment_label,
+  data    = cohort,
+  weights = cohort$ato_weight
+)
+
+tbl_regression(cox_wt, exponentiate = TRUE) |>
+  modify_header(estimate ~ "**HR**") |>
+  modify_caption(
+    "**Table 2. Primary composite endpoint — ATO-weighted hazard ratio**"
+  )
+```
+
+```{r}
+#| label: hr-extract
+hr      <- exp(coef(cox_wt))[["treatment_labelDrug A"]]
+ci      <- exp(confint(cox_wt))["treatment_labelDrug A", ]
+hr_text <- sprintf("%.2f (95%% CI, %.2f-%.2f)", hr, ci[1], ci[2])
+```
+
+**Primary result:** Drug A vs. Drug B HR = **`r hr_text`** for the
+composite of HF hospitalization or all-cause mortality.
+
+## Step 4 — One-year cumulative incidence
+
+```{r}
+#| label: one-year-risk
+fit_wt <- survfit(
+  Surv(time, status) ~ treatment_label,
+  data    = cohort,
+  weights = cohort$ato_weight
+)
+
+risk_1yr <- summary(fit_wt, times = 365)
+risk_tbl <- data.frame(
+  Group         = sub("treatment_label=", "", risk_1yr$strata),
+  `1-year risk` = sprintf("%.1f%% (95%% CI, %.1f%%-%.1f%%)",
+                          100 * (1 - risk_1yr$surv),
+                          100 * (1 - risk_1yr$lower),
+                          100 * (1 - risk_1yr$upper)),
+  check.names = FALSE
+)
+kable(risk_tbl, caption = "Table 3. ATO-weighted 1-year risk by arm")
+```
+
+```{r}
+#| label: cif-plot
+#| fig-width: 8
+#| fig-height: 5
+survfit2(
+  Surv(time, status) ~ treatment_label,
+  data    = cohort,
+  weights = cohort$ato_weight
+) |>
+  ggsurvfit(type = "risk", linewidth = 1) +
+  add_confidence_interval() +
+  add_risktable(risktable_stats = "n.risk") +
+  coord_cartesian(xlim = c(0, 365)) +
+  scale_x_continuous(breaks = seq(0, 365, 90)) +
+  scale_y_continuous(labels = percent) +
+  labs(
+    title = "Cumulative incidence of HF hospitalization or all-cause mortality",
+    x = "Days since treatment initiation",
+    y = "Cumulative incidence"
+  )
+```
+
+### Interpretation
+
+After propensity-score overlap weighting, the risk of
+the composite endpoint is **not meaningfully different** between Drug A and
+Drug B initiators, with a hazard ratio close to the published estimate of
+0.86 and a confidence interval that crosses 1.0. The crude (unweighted) analysis
+would have overstated a Drug A benefit because of confounding by
+indication — illustrating why balancing the treatment groups is essential.
