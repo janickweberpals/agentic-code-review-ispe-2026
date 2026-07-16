@@ -181,9 +181,9 @@ What is **Code Validation**?
 
 ![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
 
-## Code Review - GitHub Demo \[placeholder\]
+## Code Review - GitHub Demo
 
-PLACEHOLDER
+{{< video "https://www.youtube-nocookie.com/embed/WpZEhvwd2vA?si=4jOGvvc1cR4WHzhK" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
 ## Code Validation and Unit-Testing
 
@@ -340,11 +340,9 @@ Be specific, cite exact lines, and suggest fixes rather than just naming problem
 ```
 :::
 
-## [Claude Code - Demo (placeholder)]{style="font-size: 0.8em;"}
+## Claude Code - Demo
 
-{{< video "https://www.youtube-nocookie.com/embed/RKsADl0ZC3Y?si=y8GEOERtR3P9-eMm" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
-
-Video courtesy of Anthropic
+{{< video "https://www.youtube-nocookie.com/embed/Um3ZNVcZOt4?si=hREAZjxKiElGSkZU" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
 ## Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]{style="font-size: 0.8em;"}
 
