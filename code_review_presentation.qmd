@@ -51,7 +51,7 @@ library(gt)
 -   JW is an employee of the Enterprise AI organization within AstraZeneca and own shares in AstraZeneca.
 <!-- -  The views and opinions expressed in this presentation are those of the author and do not necessarily reflect the official policy or position of AstraZeneca. The author is presenting in a personal capacity. -->
 -   JW does not have any financial or personal relationships with Anthropic, Microsoft, or OpenAI, that could influence the content of this presentation.
-- Some content in this presentation was generated using Claude Sonnet 5
+- Some content in this presentation was generated using Claude Sonnet 5.
 :::
 
 ## Structure Brainstorming {visibility="hidden"}
@@ -367,7 +367,7 @@ Be specific, cite exact lines, and suggest fixes rather than just naming problem
 
 Many thanks to the following colleagues for their input and feedback on this presentation:
 
--   **AstraZeneca (Enterprise AI)**: Alex Grigorenko, Leonidas Souliotis, Yannis Darhi, Sam Hillman
+-   **AstraZeneca (Enterprise AI)**: Alex Grigorenko, Leonidas Souliotis, Yannis Darhi, Muhammad Ekram, Sam Hillman, Sajan Khosla
 -   **Transparency and Reproducibility A-team**: Anton Pottegard, Shirley V. Wang, Dani Prieto-Alhambra, Mina Tadrous
 :::
 
