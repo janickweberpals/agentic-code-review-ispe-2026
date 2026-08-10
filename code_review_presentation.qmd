@@ -131,7 +131,7 @@ library(gt)
 :::
 
 ::: {.column width="50%"}
-![Systematic code review serves as a critical safeguard against human error in data analysis, enhancing research quality and transparency while fostering a collective culture of reproducibility within the scientific community.[@vable2021code]](images/Vable-et-al.-2021.png){#fig-aje-2021 fig-cap-location="bottom" style="font-size: 0.6em;"}
+![Systematic code review serves as a critical safeguard against human error in data analysis, enhancing research quality and transparency while fostering a collective culture of reproducibility within the scientific community [@vable2021code].](images/Vable-et-al.-2021.png){#fig-aje-2021 fig-cap-location="bottom" style="font-size: 0.6em;"}
 :::
 :::::
 
@@ -149,13 +149,13 @@ library(gt)
 
 ## Consequences of Poor Code Quality (ii)
 
-![Gander et al. JAMA. 2019;322(10):957-973. JAMA. 2020 Apr 21;323(15):1509-1510. doi: 10.1001/jama.2020.2328. @gander2020notice](images/jama_coding_error.png){#fig-jama-coding-error fig-alt="Following the publication, we were approached by a senior epidemiologist representing a for-profit large dialysis chain who was unable to reproduce our results. Through a series of exchanges and reviews of our publicly available analytic code, we identified a single line of code that had an error in a merge statement in SAS version 9.4 (SAS Institute Inc) in an early step of our study cohort creation when assigning the profit status of a dialysis facility to the time of the event. In the merge of the overall study cohort with a separate file that denoted wait listing, the column indicating the provider number of the dialysis facility from the wait list file overwrote the provider number of the dialysis facility in the study cohort file. Despite multiple analysts reviewing the code for the study, this particular code did not appear as an error. For analysts who code in other programming languages, such as R or Python, this particular merge procedure is handled differently and is not an error, but in SAS, there is no error or warning when the underlying data set has the same variable name as the new data set in the merge. Unfortunately, this resulted in a misclassification of provider numbers of some of the dialysis facilities and assigned the provider number of the transplant center, rather than the dialysis facility, decreasing the number of observations that could be linked to the dialysis facility–level data."}
+![Gander et al. JAMA. 2019;322(10):957-973. JAMA. 2020 Apr 21;323(15):1509-1510. doi: 10.1001/jama.2020.2328. @gander2020notice.](images/jama_coding_error.png){#fig-jama-coding-error fig-alt="Following the publication, we were approached by a senior epidemiologist representing a for-profit large dialysis chain who was unable to reproduce our results. Through a series of exchanges and reviews of our publicly available analytic code, we identified a single line of code that had an error in a merge statement in SAS version 9.4 (SAS Institute Inc) in an early step of our study cohort creation when assigning the profit status of a dialysis facility to the time of the event. In the merge of the overall study cohort with a separate file that denoted wait listing, the column indicating the provider number of the dialysis facility from the wait list file overwrote the provider number of the dialysis facility in the study cohort file. Despite multiple analysts reviewing the code for the study, this particular code did not appear as an error. For analysts who code in other programming languages, such as R or Python, this particular merge procedure is handled differently and is not an error, but in SAS, there is no error or warning when the underlying data set has the same variable name as the new data set in the merge. Unfortunately, this resulted in a misclassification of provider numbers of some of the dialysis facilities and assigned the provider number of the transplant center, rather than the dialysis facility, decreasing the number of observations that could be linked to the dialysis facility–level data."}
 
 ## Code Review and Validation
 
 *The Peer Review for Code and Best Practices*
 
-![Code review and validation adoption ladder with increasing formalization, from version-controlled source code up to the pre-specified clinical study protocol](images/code_review_validation_ladder.png){#fig-review-validation-ladder}
+![Code review and validation adoption ladder with increasing formalization, from version-controlled source code up to the pre-specified clinical study protocol.](images/code_review_validation_ladder.png){#fig-review-validation-ladder}
 
 ::: {.notes}
 Following Best Practices
@@ -179,7 +179,7 @@ What is **Code Validation**?
 
 ## Code Review - Pull Request Workflow
 
-![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
+![Flowchart of a typical code review workflow as part of a GitHub pull request.](images/pr_workflow.png){#fig-pr-workflow}
 
 ## Code Review - GitHub Demo
 
@@ -226,11 +226,11 @@ A failure means the censoring logic no longer matches the follow-up window defin
 
 ## Manual Code Review Is Time-Consuming
 
-![Manual code review takes hours to work through, while agent-assisted review flags issues in minutes](images/code_review_cartoon.png){#fig-code-review-cartoon fig-align="center"}
+![Manual code review takes hours to work through, while agent-assisted review flags issues in minutes.](images/code_review_cartoon.png){#fig-code-review-cartoon fig-align="center"}
 
 ## Coding Agents[@raschka2026components; @mindstudio2026harness]
 
-![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions](images/ai_coding_agent_architecture.png){#fig-coding-agents width="95%"}
+![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions.](images/ai_coding_agent_architecture.png){#fig-coding-agents width="95%"}
 
 ## Context: Repository Structure as Agent Memory
 
@@ -253,7 +253,7 @@ The richer the context, the more targeted and accurate the agentic code review
 :::::
 
 ::: {.column width="50%"}
-![An organized repository structure provides rich context about the intended study & analysis](images/repo_structure.png){#fig-repo-structure width="100%" style="max-height: 500px; object-fit: contain;"}
+![An organized repository structure provides rich context about the intended study & analysis.](images/repo_structure.png){#fig-repo-structure width="100%" style="max-height: 500px; object-fit: contain;"}
 :::
 :::::::
 
@@ -270,7 +270,7 @@ The richer the context, the more targeted and accurate the agentic code review
 :::
 
 ::: {.column width="50%"}
-![Claude's abilities are customizable. [Learn more](https://code.claude.com/docs/en/claude-directory#ce-agent-reviewer)](images/claude-directory.png){#fig-claude-directory width="100%"}
+![Claude's abilities are customizable. [Learn more](https://code.claude.com/docs/en/claude-directory#ce-agent-reviewer).](images/claude-directory.png){#fig-claude-directory width="100%"}
 :::
 :::::
 
@@ -350,15 +350,15 @@ Be specific, cite exact lines, and suggest fixes rather than just naming problem
 
 ## PROS of Coding Agents
 
-![Coding agents enable AI-ready foundations, front-loaded review, long-term ROI, tailored lab-specific configuration, and faster onboarding for junior researchers](images/coding_agent_pros.png){#fig-coding-agent-pros fig-align="center"}
+![Coding agents enable AI-ready foundations, front-loaded review, long-term ROI, tailored lab-specific configuration, and faster onboarding for junior researchers.](images/coding_agent_pros.png){#fig-coding-agent-pros fig-align="center"}
 
 ## CONS of Coding Agents
 
-![Coding agents raise concerns around cost, dependence on a small number of hyperscalers, privacy vs. context tradeoffs, and reproducibility of the review itself](images/coding_agent_cons.png){#fig-coding-agent-cons fig-align="center"}
+![Coding agents raise concerns around cost, dependence on a small number of hyperscalers, privacy vs. context tradeoffs, and reproducibility of the review itself.](images/coding_agent_cons.png){#fig-coding-agent-cons fig-align="center"}
 
 ## Famous final words
 
-![Linus Torvalds, developer of `git` and `Linux`](images/talk-is-cheap.jpg){#fig-talk width="100%"}
+![Linus Torvalds, developer of `git` and `Linux`.](images/talk-is-cheap.jpg){#fig-talk width="100%"}
 
 ## Acknowledgements
 
