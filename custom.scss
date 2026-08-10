@@ -2,7 +2,7 @@
 
 /*-- $body-bg: #666666; 
 $body-color: #fff; --*/
-$link-color: #42affa;
+$link-color: #003865;
 $font-family-sans-serif: Calisto MT;
 
 /*-- font sizes--*/
@@ -16,6 +16,36 @@ $presentation-heading-color: #830051;
 .reveal .slide blockquote {
   border-left: 3px solid $text-muted;
   padding-left: 0.5em;
+}
+
+.reveal .callout-important {
+  border-left: 5px solid #830051;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  background: #ffffff;
+}
+.reveal .callout-important .callout-title {
+  color: #830051;
+}
+
+.reveal .callout-note {
+  border-left: 5px solid #003865;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  background: #ffffff;
+}
+.reveal .callout-note .callout-title {
+  color: #003865;
+}
+
+.reveal .callout-warning {
+  border-left: 5px solid #F0AB00;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  background: #ffffff;
+}
+.reveal .callout-warning .callout-title {
+  color: #F0AB00;
 }
 
 /*-- 
