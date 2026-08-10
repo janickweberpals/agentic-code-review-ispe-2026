@@ -16,7 +16,6 @@ author:
 format:
   revealjs: 
     theme: custom.scss
-    logo: images/icpe26_logo.jpg
     footer: An Introduction to Agentic Coding Assistants
     incremental: false 
     width: 1280
