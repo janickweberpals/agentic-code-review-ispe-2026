@@ -16,7 +16,6 @@ author:
 format:
   revealjs: 
     theme: custom.scss
-    logo: images/icpe26_logo.jpg
     footer: An Introduction to Agentic Coding Assistants
     incremental: false 
     width: 1280
@@ -68,9 +67,9 @@ library(gt)
 -   Examples of how to use agentic coding assistants for code review and validation in pharmacoepidemiology
     -   Interacting with code using natural language
 
-# Code Review - The Why?
+# Code Review - The Why? 
 
-## The Hallmarks of Transparent and Reproducible Research
+## The Hallmarks of Transparent and Reproducible Research {visibility="hidden"}
 
 ::::::::::::::: columns
 ::::: {.column width="25%"}
@@ -131,11 +130,11 @@ library(gt)
 :::
 
 ::: {.column width="50%"}
-![Systematic code review serves as a critical safeguard against human error in data analysis, enhancing research quality and transparency while fostering a collective culture of reproducibility within the scientific community.[@vable2021code]](images/Vable-et-al.-2021.png){#fig-aje-2021 fig-cap-location="bottom" style="font-size: 0.6em;"}
+![Systematic code review serves as a critical safeguard against human error in data analysis, enhancing research quality and transparency while fostering a collective culture of reproducibility within the scientific community [@vable2021code].](images/Vable-et-al.-2021.png){#fig-aje-2021 fig-cap-location="bottom" style="font-size: 0.6em;"}
 :::
 :::::
 
-## Consequences of Poor Code Quality (i)
+## Consequences of Poor Code Quality
 
 | Severity | Consequence |
 |:------------------------------:|:---------------------------------------|
@@ -147,15 +146,15 @@ library(gt)
 
 : {tbl-colwidths="\[15,85\]"}
 
-## Consequences of Poor Code Quality (ii)
+## Consequences of Poor Code Quality {visibility="hidden"}
 
-![Gander et al. JAMA. 2019;322(10):957-973. JAMA. 2020 Apr 21;323(15):1509-1510. doi: 10.1001/jama.2020.2328. @gander2020notice](images/jama_coding_error.png){#fig-jama-coding-error fig-alt="Following the publication, we were approached by a senior epidemiologist representing a for-profit large dialysis chain who was unable to reproduce our results. Through a series of exchanges and reviews of our publicly available analytic code, we identified a single line of code that had an error in a merge statement in SAS version 9.4 (SAS Institute Inc) in an early step of our study cohort creation when assigning the profit status of a dialysis facility to the time of the event. In the merge of the overall study cohort with a separate file that denoted wait listing, the column indicating the provider number of the dialysis facility from the wait list file overwrote the provider number of the dialysis facility in the study cohort file. Despite multiple analysts reviewing the code for the study, this particular code did not appear as an error. For analysts who code in other programming languages, such as R or Python, this particular merge procedure is handled differently and is not an error, but in SAS, there is no error or warning when the underlying data set has the same variable name as the new data set in the merge. Unfortunately, this resulted in a misclassification of provider numbers of some of the dialysis facilities and assigned the provider number of the transplant center, rather than the dialysis facility, decreasing the number of observations that could be linked to the dialysis facility–level data."}
+![Gander et al. JAMA. 2019;322(10):957-973. JAMA. 2020 Apr 21;323(15):1509-1510. doi: 10.1001/jama.2020.2328. @gander2020notice.](images/jama_coding_error.png){#fig-jama-coding-error fig-alt="Following the publication, we were approached by a senior epidemiologist representing a for-profit large dialysis chain who was unable to reproduce our results. Through a series of exchanges and reviews of our publicly available analytic code, we identified a single line of code that had an error in a merge statement in SAS version 9.4 (SAS Institute Inc) in an early step of our study cohort creation when assigning the profit status of a dialysis facility to the time of the event. In the merge of the overall study cohort with a separate file that denoted wait listing, the column indicating the provider number of the dialysis facility from the wait list file overwrote the provider number of the dialysis facility in the study cohort file. Despite multiple analysts reviewing the code for the study, this particular code did not appear as an error. For analysts who code in other programming languages, such as R or Python, this particular merge procedure is handled differently and is not an error, but in SAS, there is no error or warning when the underlying data set has the same variable name as the new data set in the merge. Unfortunately, this resulted in a misclassification of provider numbers of some of the dialysis facilities and assigned the provider number of the transplant center, rather than the dialysis facility, decreasing the number of observations that could be linked to the dialysis facility–level data."}
 
 ## Code Review and Validation
 
-*The Peer Review for Code and Best Practices*
+[*The Peer Review for Code and Best Practices*]{style="color: #9DB0AC;"}
 
-![Code review and validation adoption ladder with increasing formalization, from version-controlled source code up to the pre-specified clinical study protocol](images/code_review_validation_ladder.png){#fig-review-validation-ladder}
+![Code review and validation adoption ladder with increasing formalization, from version-controlled source code up to the pre-specified clinical study protocol.](images/code_review_validation_ladder.png){#fig-review-validation-ladder}
 
 ::: {.notes}
 Following Best Practices
@@ -179,7 +178,7 @@ What is **Code Validation**?
 
 ## Code Review - Pull Request Workflow
 
-![Flowchart of a typical code review workflow as part of a GitHub pull request](images/pr_workflow.png){#fig-pr-workflow}
+![Flowchart of a typical code review workflow as part of a GitHub pull request.](images/pr_workflow.png){#fig-pr-workflow}
 
 ## Code Review - GitHub Demo
 
@@ -188,7 +187,11 @@ What is **Code Validation**?
 ## Code Validation and Unit-Testing
 
 - Unit-tests are a powerful tool for automating the validation of code correctness and protocol adherence (e.g., using `testthat` in R)
-- Unit-testing can automate validation in any applied analytical study and covered **units** are quantifiable
+- Unit-testing can automate and formalize validation in any applied analytical study and covered **units** are quantifiable
+
+<style>
+.notebox { background:#ffffff; border-radius:10px; padding:12px 14px; box-shadow:0 2px 10px rgba(0,0,0,0.12); border-top:5px solid var(--accent); font-size:0.75em; color:#555; line-height:1.35; }
+</style>
 
 ::::: columns
 ::: {.column style="width: 50%; font-size: 0.72em;"}
@@ -200,7 +203,7 @@ test_that("ATO weights are strictly positive", {
 })
 ```
 
-::: {.callout-note icon="false" style="font-size: 0.75em;"}
+::: {.notebox style="--accent:#830051;"}
 ATO weights equal `ps` (controls) or `1 − ps` (treated). Since `ps ∈ (0, 1)`, a weight ≤ 0 signals a wrong `estimand` or a degenerate propensity score.
 :::
 :::
@@ -218,7 +221,7 @@ test_that("all event times ≤ 365 days (CSP §8.3)", {
 })
 ```
 
-::: {.callout-warning icon="false" style="font-size: 0.75em;"}
+::: {.notebox style="--accent:#003865;"}
 A failure means the censoring logic no longer matches the follow-up window defined in the CSP — catching a silent protocol deviation.
 :::
 :::
@@ -226,17 +229,17 @@ A failure means the censoring logic no longer matches the follow-up window defin
 
 ## Manual Code Review Is Time-Consuming
 
-![Manual code review takes hours to work through, while agent-assisted review flags issues in minutes](images/code_review_cartoon.png){#fig-code-review-cartoon fig-align="center"}
+![Manual code review takes hours to work through, while agent-assisted review flags issues in minutes.](images/code_review_cartoon.png){#fig-code-review-cartoon fig-align="center"}
 
 ## Coding Agents[@raschka2026components; @mindstudio2026harness]
 
-![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions](images/ai_coding_agent_architecture.png){#fig-coding-agents width="95%"}
+![AI coding agents are LLM-based software programs that autonomously perform coding tasks through natural language interactions.](images/ai_coding_agent_architecture.png){#fig-coding-agents width="95%"}
 
 ## Context: Repository Structure as Agent Memory
 
 ::::::: columns
 ::::: {.column width="50%"}
-::: {.callout-tip icon="false" style="font-size: 0.7em;"}
+::: {.callout-note icon="false" style="font-size: 0.7em;"}
 ## 🤖 Coding Agents Are Context Hungry
 
 The richer the context, the more targeted and accurate the agentic code review
@@ -253,7 +256,7 @@ The richer the context, the more targeted and accurate the agentic code review
 :::::
 
 ::: {.column width="50%"}
-![An organized repository structure provides rich context about the intended study & analysis](images/repo_structure.png){#fig-repo-structure width="100%" style="max-height: 500px; object-fit: contain;"}
+![An organized repository structure provides rich context about the intended study & analysis.](images/repo_structure.png){#fig-repo-structure width="100%" style="max-height: 500px; object-fit: contain;"}
 :::
 :::::::
 
@@ -270,7 +273,7 @@ The richer the context, the more targeted and accurate the agentic code review
 :::
 
 ::: {.column width="50%"}
-![Claude's abilities are customizable. [Learn more](https://code.claude.com/docs/en/claude-directory#ce-agent-reviewer)](images/claude-directory.png){#fig-claude-directory width="100%"}
+![Claude's abilities are customizable. [Learn more](https://code.claude.com/docs/en/claude-directory#ce-agent-reviewer).](images/claude-directory.png){#fig-claude-directory width="100%"}
 :::
 :::::
 
@@ -344,21 +347,150 @@ Be specific, cite exact lines, and suggest fixes rather than just naming problem
 
 {{< video "https://www.youtube-nocookie.com/embed/Um3ZNVcZOt4?si=hREAZjxKiElGSkZU" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
 
-## Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]{style="font-size: 0.8em;"}
-
-{{< video "https://www.youtube-nocookie.com/embed/xvhYmGz_x74?si=fS86anQWzkdXIXUa" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
-
 ## PROS of Coding Agents
 
-![Coding agents enable AI-ready foundations, front-loaded review, long-term ROI, tailored lab-specific configuration, and faster onboarding for junior researchers](images/coding_agent_pros.png){#fig-coding-agent-pros fig-align="center"}
+<style>
+.agentcard-row { display:flex; gap:20px; justify-content:center; margin-top:20px; }
+.agentcard-row.wide { margin-top:14px; }
+.agentcard { background:#ffffff; border-radius:14px; padding:22px 20px; box-shadow:0 2px 10px rgba(0,0,0,0.12); text-align:left; border-top:7px solid var(--accent); flex:1 1 0; max-width:420px; }
+.agentcard-row.wide .agentcard { max-width:580px; padding:18px 22px; }
+.agentcard-icon { width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:12px; }
+.agentcard-row.wide .agentcard-icon { width:44px; height:44px; font-size:22px; margin-bottom:8px; }
+.agentcard-title { font-size:0.75em; font-weight:700; color:#222; margin-bottom:8px; line-height:1.25; }
+.agentcard-row.wide .agentcard-title { margin-bottom:6px; }
+.agentcard-desc { font-size:0.58em; color:#555; line-height:1.4; }
+.agentcard-desc ul { margin:6px 0 0 1.1em; padding:0; }
+.agentcard-desc li { margin-bottom:4px; }
+</style>
+
+::: {.agentcard-row}
+::: {.agentcard style="--accent:#003865;"}
+::: {.agentcard-icon}
+🌱
+:::
+::: {.agentcard-title}
+AI-ready foundations
+:::
+::: {.agentcard-desc}
+Enforces best practices on version control, history, and documentation
+:::
+:::
+
+::: {.agentcard style="--accent:#F0AB00;"}
+::: {.agentcard-icon}
+✅
+:::
+::: {.agentcard-title}
+Front-loaded review
+:::
+::: {.agentcard-desc}
+Flags issues before a human ever looks
+:::
+:::
+
+::: {.agentcard style="--accent:#830051;"}
+::: {.agentcard-icon}
+📈
+:::
+::: {.agentcard-title}
+Long-term ROI
+:::
+::: {.agentcard-desc}
+Upfront investment pays off in speed and quality over time
+:::
+:::
+:::
+
+::: {.agentcard-row}
+::: {.agentcard style="--accent:#9DB0AC;"}
+::: {.agentcard-icon}
+🧪
+:::
+::: {.agentcard-title}
+Tailored to your lab
+:::
+::: {.agentcard-desc}
+Custom agents configured for your team's context
+:::
+:::
+
+::: {.agentcard style="--accent:#0a6ea8;"}
+::: {.agentcard-icon}
+🧭
+:::
+::: {.agentcard-title}
+Faster onboarding
+:::
+::: {.agentcard-desc}
+Immediate, consistent feedback for junior researchers learning new tools and team conventions
+:::
+:::
+:::
 
 ## CONS of Coding Agents
 
-![Coding agents raise concerns around cost, dependence on a small number of hyperscalers, privacy vs. context tradeoffs, and reproducibility of the review itself](images/coding_agent_cons.png){#fig-coding-agent-cons fig-align="center"}
+::: {.agentcard-row .wide}
+::: {.agentcard style="--accent:#F0AB00;"}
+::: {.agentcard-icon}
+💲
+:::
+::: {.agentcard-title}
+Costs ($$$)
+:::
+::: {.agentcard-desc}
+-   Coding agents add another layer of cost (subscriptions, token-based billing)
+-   Local, open-source coding agents are an alternative, but don't yet match the same performance
+-   Educational licenses are available for academic institutions
+:::
+:::
 
-## Famous final words
+::: {.agentcard style="--accent:#003865;"}
+::: {.agentcard-icon}
+🔒
+:::
+::: {.agentcard-title}
+Privacy vs. context
+:::
+::: {.agentcard-desc}
+-   Data governance and residency: where code and data are processed and stored (cloud vs. on-prem, data use agreements)
+-   Increasing agent autonomy requires stronger guardrails
+-   Risk of exposing PII or other sensitive data if unchecked
+:::
+:::
+:::
 
-![Linus Torvalds, developer of `git` and `Linux`](images/talk-is-cheap.jpg){#fig-talk width="100%"}
+::: {.agentcard-row .wide}
+::: {.agentcard style="--accent:#830051;"}
+::: {.agentcard-icon}
+🔗
+:::
+::: {.agentcard-title}
+Dependence
+:::
+::: {.agentcard-desc}
+-   Cutting-edge coding agents come from a small number of hyperscalers
+-   Access can be subject to export controls (e.g., Claude Fable/Mythos, June 2026)
+:::
+:::
+
+::: {.agentcard style="--accent:#9DB0AC;"}
+::: {.agentcard-icon}
+🔄
+:::
+::: {.agentcard-title}
+Reproducibility of the review itself
+:::
+::: {.agentcard-desc}
+-   Agent behavior can shift across reviews, model versions, or updates
+-   May be a minor issue since human reviews aren't 100% reproducible either (inter-reviewer agreement)
+:::
+:::
+:::
+
+
+## Famous Last Words
+
+![Linus Torvalds, developer of `git` and the `Linux kernel`.](images/talk-is-cheap.jpg){#fig-talk width="100%"}
 
 ## Acknowledgements
 
@@ -371,10 +503,124 @@ Many thanks to the following colleagues for their input and feedback on this pre
 -   **Transparency and Reproducibility A-team**: Anton Pottegard, Shirley V. Wang, Dani Prieto-Alhambra, Mina Tadrous
 :::
 
-## Materials on Version Control and Code Sharing
+## Bonus: Interacting with code using natural language[@abdelaziz2024optimizing]{style="font-size: 0.8em;"}
 
-::: callout-note
-## Key References
+{{< video "https://www.youtube-nocookie.com/embed/xvhYmGz_x74?si=fS86anQWzkdXIXUa" width="1100" height="668.5938068966" aspect-ratio="16x9" >}}
+
+## Key Takeaways & Next Steps
+
+<style>
+.takeaway-wrap { display:flex; flex-direction:column; gap:22px; margin-top:10px; }
+.takeaway-row-label { font-size:0.42em; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:2px; }
+.takeaway-row-label.remember { color:#830051; }
+.takeaway-row-label.act { color:#003865; }
+.takeaway-row { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+.takeaway-card { background:#ffffff; border-radius:12px; padding:16px 14px; box-shadow:0 2px 10px rgba(0,0,0,0.12); text-align:left; border-top:6px solid var(--accent); }
+.takeaway-icon { width:42px; height:42px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:10px; }
+.takeaway-title { font-size:0.55em; font-weight:700; color:#222; margin-bottom:6px; line-height:1.2; }
+.takeaway-desc { font-size:0.44em; color:#555; line-height:1.35; }
+.takeaway-divider { display:flex; align-items:center; justify-content:center; gap:10px; color:#999; font-size:0.4em; letter-spacing:2px; }
+.takeaway-divider::before, .takeaway-divider::after { content:""; flex:1; height:1px; background:#ddd; }
+</style>
+
+::: {.takeaway-wrap}
+
+::: {.takeaway-row-label .remember}
+🧠 REMEMBER
+:::
+
+::: {.takeaway-row}
+::: {.takeaway-card style="--accent:#830051;"}
+::: {.takeaway-icon}
+🛡️
+:::
+::: {.takeaway-title}
+Review is a safety net, not a formality
+:::
+::: {.takeaway-desc}
+Bugs are inevitable — undetected ones can invalidate results and harm patients
+:::
+:::
+
+::: {.takeaway-card style="--accent:#830051;"}
+::: {.takeaway-icon}
+🗂️
+:::
+::: {.takeaway-title}
+Your repo *is* the agent's memory
+:::
+::: {.takeaway-desc}
+A well-organized project repository, including protocol, analysis scripts, dependencies, and documentation makes agentic **AND** human review sharper and more targeted
+:::
+:::
+
+::: {.takeaway-card style="--accent:#830051;"}
+::: {.takeaway-icon}
+🤝
+:::
+::: {.takeaway-title}
+Augment, don't replace
+:::
+::: {.takeaway-desc}
+Agentic review and validation speeds up the first pass — human review still required & you still own the judgment call
+:::
+:::
+:::
+
+::: {.takeaway-divider}
+FROM INSIGHT TO ACTION
+:::
+
+::: {.takeaway-row-label .act}
+✅ DO THIS BACK AT THE OFFICE
+:::
+
+::: {.takeaway-row}
+::: {.takeaway-card style="--accent:#003865;"}
+::: {.takeaway-icon}
+⚙️
+:::
+::: {.takeaway-title}
+Check your current project repository
+:::
+::: {.takeaway-desc}
+Would another human understand the structure and included analytic code?
+:::
+:::
+
+::: {.takeaway-card style="--accent:#003865;"}
+::: {.takeaway-icon}
+🔍
+:::
+::: {.takeaway-title}
+If you haven't already, ask a colleague to provide a code review
+:::
+::: {.takeaway-desc}
+If you haven't already, ask a colleague to provide a code review and test out a pull request workflow
+:::
+:::
+
+::: {.takeaway-card style="--accent:#003865;"}
+::: {.takeaway-icon}
+🧪
+:::
+::: {.takeaway-title}
+Create your own `/code-reviewer.md` agent file
+:::
+::: {.takeaway-desc}
+Think about what checks are important and how you would instruct a coding agent to review your project (+/- use an actual coding assistant to perform the code review)
+:::
+:::
+:::
+
+:::
+
+## Key Links and References
+
+::: {style="font-size: 0.85em;"}
+
+::: callout-important
+## Version control (git, GitHub)
 
 -   [ICPE 2025 pre-conference course materials](https://janickweberpals.github.io/icpe-git-2025/)
 
@@ -385,6 +631,15 @@ Many thanks to the following colleagues for their input and feedback on this pre
 -   Schultze A, Tazare J. The role of programming code sharing in improving the transparency of medical research. BMJ. 2023 Oct 17;383:2402. [doi: 10.1136/bmj.p2402](https://www.bmj.com/content/383/bmj.p2402.long). [@schultze2023role]
 
 -   [Pharmacoepidemiology and Drug Safety Special Issue on Pharmacoepidemiology Research Reproducibility](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1099-1557.research-reproducibility)
+:::
+
+::: callout-note
+## Code review and coding agents
+- Vable AM, Diehl SF, Glymour MM. Code Review as a Simple Trick to Enhance Reproducibility, Accelerate Learning, and Improve the Quality of Your Team's Research. Am J Epidemiol. 2021 Oct 1;190(10):2172-2177. [doi: 10.1093/aje/kwab092.](https://academic.oup.com/aje/article-abstract/190/10/2172/6218064?redirectedFrom=fulltext&login=false)
+- Claude Code - [Code Review Skill documentation](https://code.claude.com/docs/en/code-review#review-a-diff-locally)
+- [Introduction to GitHub Copilot and Coding Assistants](https://janickweberpals.github.io/icpe-git-2025/04_copilot.html), ICPE 2025 pre-conference materials
+:::
+
 :::
 
 ## References

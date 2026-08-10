@@ -2,7 +2,7 @@
 
 /*-- $body-bg: #666666; 
 $body-color: #fff; --*/
-$link-color: #42affa;
+$link-color: #003865;
 $font-family-sans-serif: Calisto MT;
 
 /*-- font sizes--*/
@@ -18,7 +18,41 @@ $presentation-heading-color: #830051;
   padding-left: 0.5em;
 }
 
-/*-- 
+.reveal div.callout.callout-important.callout-style-default,
+.reveal div.callout.callout-note.callout-style-default,
+.reveal div.callout.callout-warning.callout-style-default {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  border: none;
+}
+.reveal div.callout.callout-important.callout-style-default .callout-title,
+.reveal div.callout.callout-note.callout-style-default .callout-title,
+.reveal div.callout.callout-warning.callout-style-default .callout-title {
+  font-weight: 700;
+  background: transparent;
+}
+.reveal div.callout.callout-important.callout-style-default {
+  border-top: 6px solid #830051;
+}
+.reveal div.callout.callout-important.callout-style-default .callout-title {
+  color: #830051;
+}
+.reveal div.callout.callout-note.callout-style-default {
+  border-top: 6px solid #003865;
+}
+.reveal div.callout.callout-note.callout-style-default .callout-title {
+  color: #003865;
+}
+.reveal div.callout.callout-warning.callout-style-default {
+  border-top: 6px solid #F0AB00;
+}
+.reveal div.callout.callout-warning.callout-style-default .callout-title {
+  color: #F0AB00;
+}
+
+/*--
 .reveal .slide-logo {
   height: 80px !important;
   width: 400px !important;
