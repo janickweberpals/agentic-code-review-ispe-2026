@@ -593,10 +593,10 @@ Would another human understand the structure and included analytic code?
 🔍
 :::
 ::: {.takeaway-title}
-If you haven't already, ask a colleague to provide a code review
+Ask a colleague to provide a code review
 :::
 ::: {.takeaway-desc}
-If you haven't already, ask a colleague to provide a code review and test out a pull request workflow
+If you haven't already, ask a colleague to provide a code review and test out a pull request workflow on GitHub
 :::
 :::
 
