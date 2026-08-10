@@ -41,7 +41,6 @@ editor: source
 
 library(tibble)
 library(gt)
-library(testthat)
 ```
 
 ## Disclosures
@@ -190,6 +189,10 @@ What is **Code Validation**?
 - Unit-tests are a powerful tool for automating the validation of code correctness and protocol adherence (e.g., using `testthat` in R)
 - Unit-testing can automate and formalize validation in any applied analytical study and covered **units** are quantifiable
 
+<style>
+.notebox { background:#ffffff; border-radius:10px; padding:12px 14px; box-shadow:0 2px 10px rgba(0,0,0,0.12); border-top:5px solid var(--accent); font-size:0.75em; color:#555; line-height:1.35; }
+</style>
+
 ::::: columns
 ::: {.column style="width: 50%; font-size: 0.72em;"}
 **Structural accuracy** — does the model output make sense?
@@ -200,7 +203,7 @@ test_that("ATO weights are strictly positive", {
 })
 ```
 
-::: {.callout-note icon="false" style="font-size: 0.75em;"}
+::: {.notebox style="--accent:#830051;"}
 ATO weights equal `ps` (controls) or `1 − ps` (treated). Since `ps ∈ (0, 1)`, a weight ≤ 0 signals a wrong `estimand` or a degenerate propensity score.
 :::
 :::
@@ -218,7 +221,7 @@ test_that("all event times ≤ 365 days (CSP §8.3)", {
 })
 ```
 
-::: {.callout-warning icon="false" style="font-size: 0.75em;"}
+::: {.notebox style="--accent:#003865;"}
 A failure means the censoring logic no longer matches the follow-up window defined in the CSP — catching a silent protocol deviation.
 :::
 :::
@@ -236,7 +239,7 @@ A failure means the censoring logic no longer matches the follow-up window defin
 
 ::::::: columns
 ::::: {.column width="50%"}
-::: {.callout-tip icon="false" style="font-size: 0.7em;"}
+::: {.callout-note icon="false" style="font-size: 0.7em;"}
 ## 🤖 Coding Agents Are Context Hungry
 
 The richer the context, the more targeted and accurate the agentic code review
@@ -346,11 +349,143 @@ Be specific, cite exact lines, and suggest fixes rather than just naming problem
 
 ## PROS of Coding Agents
 
-![Coding agents enable AI-ready foundations, front-loaded review, long-term ROI, tailored lab-specific configuration, and faster onboarding for junior researchers.](images/coding_agent_pros.png){#fig-coding-agent-pros fig-align="center"}
+<style>
+.agentcard-row { display:flex; gap:20px; justify-content:center; margin-top:20px; }
+.agentcard-row.wide { margin-top:14px; }
+.agentcard { background:#ffffff; border-radius:14px; padding:22px 20px; box-shadow:0 2px 10px rgba(0,0,0,0.12); text-align:left; border-top:7px solid var(--accent); flex:1 1 0; max-width:420px; }
+.agentcard-row.wide .agentcard { max-width:580px; padding:18px 22px; }
+.agentcard-icon { width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:12px; }
+.agentcard-row.wide .agentcard-icon { width:44px; height:44px; font-size:22px; margin-bottom:8px; }
+.agentcard-title { font-size:0.75em; font-weight:700; color:#222; margin-bottom:8px; line-height:1.25; }
+.agentcard-row.wide .agentcard-title { margin-bottom:6px; }
+.agentcard-desc { font-size:0.58em; color:#555; line-height:1.4; }
+.agentcard-desc ul { margin:6px 0 0 1.1em; padding:0; }
+.agentcard-desc li { margin-bottom:4px; }
+</style>
+
+::: {.agentcard-row}
+::: {.agentcard style="--accent:#003865;"}
+::: {.agentcard-icon}
+🌱
+:::
+::: {.agentcard-title}
+AI-ready foundations
+:::
+::: {.agentcard-desc}
+Enforces best practices on version control, history, and documentation
+:::
+:::
+
+::: {.agentcard style="--accent:#F0AB00;"}
+::: {.agentcard-icon}
+✅
+:::
+::: {.agentcard-title}
+Front-loaded review
+:::
+::: {.agentcard-desc}
+Flags issues before a human ever looks
+:::
+:::
+
+::: {.agentcard style="--accent:#830051;"}
+::: {.agentcard-icon}
+📈
+:::
+::: {.agentcard-title}
+Long-term ROI
+:::
+::: {.agentcard-desc}
+Upfront investment pays off in speed and quality over time
+:::
+:::
+:::
+
+::: {.agentcard-row}
+::: {.agentcard style="--accent:#9DB0AC;"}
+::: {.agentcard-icon}
+🧪
+:::
+::: {.agentcard-title}
+Tailored to your lab
+:::
+::: {.agentcard-desc}
+Custom agents configured for your team's context
+:::
+:::
+
+::: {.agentcard style="--accent:#0a6ea8;"}
+::: {.agentcard-icon}
+🧭
+:::
+::: {.agentcard-title}
+Faster onboarding
+:::
+::: {.agentcard-desc}
+Immediate, consistent feedback for junior researchers learning new tools and team conventions
+:::
+:::
+:::
 
 ## CONS of Coding Agents
 
-![Coding agents raise concerns around cost, dependence on a small number of hyperscalers, privacy vs. context tradeoffs, and reproducibility of the review itself.](images/coding_agent_cons.png){#fig-coding-agent-cons fig-align="center"}
+::: {.agentcard-row .wide}
+::: {.agentcard style="--accent:#F0AB00;"}
+::: {.agentcard-icon}
+💲
+:::
+::: {.agentcard-title}
+Costs ($$$)
+:::
+::: {.agentcard-desc}
+-   Coding agents add another layer of cost (subscriptions, token-based billing)
+-   Local, open-source coding agents are an alternative, but don't yet match the same performance
+-   Educational licenses are available for academic institutions
+:::
+:::
+
+::: {.agentcard style="--accent:#003865;"}
+::: {.agentcard-icon}
+🔒
+:::
+::: {.agentcard-title}
+Privacy vs. context
+:::
+::: {.agentcard-desc}
+-   Data governance and residency: where code and data are processed and stored (cloud vs. on-prem, data use agreements)
+-   Increasing agent autonomy requires stronger guardrails
+-   Risk of exposing PII or other sensitive data if unchecked
+:::
+:::
+:::
+
+::: {.agentcard-row .wide}
+::: {.agentcard style="--accent:#830051;"}
+::: {.agentcard-icon}
+🔗
+:::
+::: {.agentcard-title}
+Dependence
+:::
+::: {.agentcard-desc}
+-   Cutting-edge coding agents come from a small number of hyperscalers
+-   Access can be subject to export controls (e.g., Claude Fable/Mythos, June 2026)
+:::
+:::
+
+::: {.agentcard style="--accent:#9DB0AC;"}
+::: {.agentcard-icon}
+🔄
+:::
+::: {.agentcard-title}
+Reproducibility of the review itself
+:::
+::: {.agentcard-desc}
+-   Agent behavior can shift across reviews, model versions, or updates
+-   May be a minor issue since human reviews aren't 100% reproducible either (inter-reviewer agreement)
+:::
+:::
+:::
 
 
 ## Famous Last Words
@@ -378,7 +513,7 @@ Many thanks to the following colleagues for their input and feedback on this pre
 .takeaway-wrap { display:flex; flex-direction:column; gap:22px; margin-top:10px; }
 .takeaway-row-label { font-size:0.42em; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:2px; }
 .takeaway-row-label.remember { color:#830051; }
-.takeaway-row-label.act { color:#0a6ea8; }
+.takeaway-row-label.act { color:#003865; }
 .takeaway-row { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
 .takeaway-card { background:#ffffff; border-radius:12px; padding:16px 14px; box-shadow:0 2px 10px rgba(0,0,0,0.12); text-align:left; border-top:6px solid var(--accent); }
 .takeaway-icon { width:42px; height:42px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:10px; }
@@ -441,7 +576,7 @@ FROM INSIGHT TO ACTION
 :::
 
 ::: {.takeaway-row}
-::: {.takeaway-card style="--accent:#0a6ea8;"}
+::: {.takeaway-card style="--accent:#003865;"}
 ::: {.takeaway-icon}
 ⚙️
 :::
@@ -453,7 +588,7 @@ Would another human understand the structure and included analytic code?
 :::
 :::
 
-::: {.takeaway-card style="--accent:#0a6ea8;"}
+::: {.takeaway-card style="--accent:#003865;"}
 ::: {.takeaway-icon}
 🔍
 :::
@@ -465,7 +600,7 @@ If you haven't already, ask a colleague to provide a code review and test out a 
 :::
 :::
 
-::: {.takeaway-card style="--accent:#0a6ea8;"}
+::: {.takeaway-card style="--accent:#003865;"}
 ::: {.takeaway-icon}
 🧪
 :::
