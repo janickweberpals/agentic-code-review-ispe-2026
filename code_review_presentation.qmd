@@ -501,6 +501,7 @@ Think about what checks are important and how you would instruct a coding agent 
 ## Code review and coding agents
 - Vable AM, Diehl SF, Glymour MM. Code Review as a Simple Trick to Enhance Reproducibility, Accelerate Learning, and Improve the Quality of Your Team's Research. Am J Epidemiol. 2021 Oct 1;190(10):2172-2177. [doi: 10.1093/aje/kwab092.](https://academic.oup.com/aje/article-abstract/190/10/2172/6218064?redirectedFrom=fulltext&login=false)
 - Claude Code - [Code Review Skill documentation](https://code.claude.com/docs/en/code-review#review-a-diff-locally)
+- [Introduction to GitHub Copilot and Coding Assistants](https://janickweberpals.github.io/icpe-git-2025/04_copilot.html), ICPE 2025 pre-conference materials 
 :::
 
 ## References
